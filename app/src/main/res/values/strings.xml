@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SpeedwayO1</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="Register">Register</string>
+    <string name="singIn">Sing in</string>
 </resources>
