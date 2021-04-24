@@ -5,10 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
     private val TAG: String = "TAG"
+//    private val buttonRegister: Button = findViewById<Button>(R.id.buttonRegister)
+//    private val buttonSingIn: Button = findViewById<Button>(R.id.buttonSingIn)
+//    private val editTextPassword: EditText = findViewById<EditText>(R.id.editTextPassword)
+//    private val textViewPassword: TextView = findViewById<TextView>(R.id.textViewPassword)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,19 +23,32 @@ class MainActivity : AppCompatActivity() {
 
         Log.d(TAG, "MainActivity -> onCreate")
 
-//        val buttonRegister = findViewById<Button>(R.id.buttonRegister)
-//        val buttonSingIn = findViewById<Button>(R.id.buttonSingIn)
 
         findViewById<Button>(R.id.buttonRegister).setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
-//            Toast.makeText(this, "Teraz się rejestrujesz.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Register user.", Toast.LENGTH_SHORT).show()
         }
 
         findViewById<Button>(R.id.buttonSingIn).setOnClickListener {
-            startActivity(Intent(this, MatchesActivity::class.java))
+            startActivity(Intent(this, ContestActivity::class.java))
+            Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
         }
 
 
+    }
+
+
+    override fun onUserInteraction() {
+        super.onUserInteraction()
+
+        if (findViewById<EditText>(R.id.editTextPassword).isFocused
+            && findViewById<EditText>(R.id.editTextPassword).length() > 1
+            && findViewById<EditText>(R.id.editTextPassword).length() < 5
+        ) {
+            findViewById<TextView>(R.id.textViewPassword).visibility = TextView.VISIBLE
+        } else {
+            findViewById<TextView>(R.id.textViewPassword).visibility = TextView.INVISIBLE
+        }
     }
 
 

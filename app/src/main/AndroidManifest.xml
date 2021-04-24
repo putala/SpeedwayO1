@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpeedwayO1">
 
-        <activity android:name=".MatchesActivity"></activity>
+        <activity android:name=".ContestActivity"></activity>
 
         <activity android:name=".RegisterActivity" />
 

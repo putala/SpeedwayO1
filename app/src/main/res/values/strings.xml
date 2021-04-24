@@ -8,4 +8,5 @@
     <string name="confirmPassword">Confirm password</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
+    <string name="passwordTooShort">Password too short!</string>
 </resources>
