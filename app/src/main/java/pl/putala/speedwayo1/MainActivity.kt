@@ -32,18 +32,20 @@ class MainActivity : AppCompatActivity() {
         validationEmail(findViewById(R.id.editTextEmail), findViewById(R.id.textViewEmail))
 
 
-        findViewById<Button>(R.id.buttonRegister).setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
-            Toast.makeText(this, "Register user.", Toast.LENGTH_SHORT).show()
-        }
+
 
         findViewById<Button>(R.id.buttonSingIn).setOnClickListener {
             startActivity(Intent(this, ContestActivity::class.java))
             Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
         }
 
+        findViewById<Button>(R.id.buttonSingIn2).setOnClickListener {
+            startActivity(Intent(this, MainActivity2::class.java))
+            Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
+        }
 
     }
+
 
 
 //

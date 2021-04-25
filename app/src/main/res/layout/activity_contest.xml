@@ -7,6 +7,7 @@
     tools:context=".ContestActivity">
 
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTypes"
         android:layout_width="match_parent"
@@ -14,6 +15,7 @@
         android:clipToPadding="false"
         android:padding="4dp"
         tools:listitem="@layout/example_item" />
+
 
 
 </RelativeLayout>
