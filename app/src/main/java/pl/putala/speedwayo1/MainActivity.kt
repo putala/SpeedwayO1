@@ -15,7 +15,7 @@ import pl.putala.speedwayo1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+
     private val TAG: String = "TAG"
 
 
@@ -28,12 +28,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        binding = ActivityMainBinding.inflate(layoutInflater)
 
         Log.d(TAG, "MainActivity -> onCreate")
 
-        validationPassword(binding.editTextPassword, binding.textViewPassword)
-        validationEmail(binding.editTextEmail, binding.textViewEmail)
+        validationPassword(findViewById(R.id.editTextPassword), findViewById(R.id.textViewPassword))
+        validationEmail(findViewById(R.id.editTextEmail), findViewById(R.id.textViewEmail))
 
 
     }

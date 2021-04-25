@@ -13,7 +13,7 @@ class RankingActivity : AppCompatActivity() {
 //        val exampleList2 = generateDummyList(5)
 
         findViewById<RecyclerView>(R.id.recyclerViewRanking).layoutManager = LinearLayoutManager(this)
-        findViewById<RecyclerView>(R.id.recyclerViewRanking).adapter = ContestAdapter()
+        findViewById<RecyclerView>(R.id.recyclerViewRanking).adapter = RankingAdapter()
 
 //        findViewById<RecyclerView>(R.id.recyclerViewRanking).setHasFixedSize(true)
 

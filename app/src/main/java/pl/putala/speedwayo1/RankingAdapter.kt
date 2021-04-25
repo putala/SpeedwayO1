@@ -7,11 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class RankingAdapter: RecyclerView.Adapter<RankingAdapter.MyViewHolder>() {
+class RankingAdapter: RecyclerView.Adapter<MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context).inflate(R.layout.item_ranking, parent, false)
-        return RankingAdapter.MyViewHolder(layoutInflater)
+        return MyViewHolder(layoutInflater)
     }
 
 
@@ -27,12 +27,10 @@ class RankingAdapter: RecyclerView.Adapter<RankingAdapter.MyViewHolder>() {
 
 
     override fun getItemCount(): Int {
-        return 10 // RankingDatabase.rankingUser.size
+        return RankingDatabase.rankingUser.size
     }
-
-
-    class MyViewHolder(val view: View): RecyclerView.ViewHolder(view)
 
 }
 
 
+class MyViewHolder(val view: View): RecyclerView.ViewHolder(view)
