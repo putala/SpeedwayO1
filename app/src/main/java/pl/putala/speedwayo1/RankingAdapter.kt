@@ -14,22 +14,22 @@ class RankingAdapter: RecyclerView.Adapter<MyViewHolder>() {
         return MyViewHolder(layoutInflater)
     }
 
-
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, i: Int) {
         val name = holder.view.findViewById<TextView>(R.id.textViewUserNickname)
         val points = holder.view.findViewById<TextView>(R.id.textViewPoints)
-        name.setText(RankingDatabase.rankingUser[position])
-        points.setText(RankingDatabase.rankingPoints[position])
-//        name.setText("idytidtyi")
-//        points.setText("654")
-
+        val position = holder.view.findViewById<TextView>(R.id.textViewPosition)
+        name.setText(RankingDatabase.rankingUser[i])
+        points.setText(RankingDatabase.rankingPoints[i])
+        if (i<9) {
+            position.setText("0" + (i+1))
+        } else {
+            position.setText("" + (i+1))
+        }
     }
-
 
     override fun getItemCount(): Int {
         return RankingDatabase.rankingUser.size
     }
-
 }
 
 
