@@ -28,53 +28,8 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "MainActivity -> onCreate")
 
 
-        findViewById<EditText>(R.id.editTextPassword).addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(s: Editable?) {
-
-                if (findViewById<EditText>(R.id.editTextPassword).isFocused
-                    && findViewById<EditText>(R.id.editTextPassword).length() > 0
-                    && findViewById<EditText>(R.id.editTextPassword).length() < 5
-                ) {
-                    findViewById<TextView>(R.id.textViewPassword).visibility = TextView.VISIBLE
-                } else {
-                    findViewById<TextView>(R.id.textViewPassword).visibility = TextView.INVISIBLE
-                }
-            }
-
-        })
-
-
-        findViewById<EditText>(R.id.editTextEmail).addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(s: Editable?) {
-
-                if (findViewById<EditText>(R.id.editTextEmail).isFocused
-                    && findViewById<EditText>(R.id.editTextEmail).length() != 0
-                ) {
-                    var monkey: Boolean = false
-                    for (i in findViewById<EditText>(R.id.editTextEmail).text) {
-                        if (i == '@') {
-                            monkey = true
-                        }
-                    }
-                    if (monkey) {
-                        findViewById<TextView>(R.id.textViewEmail).visibility = TextView.INVISIBLE
-                    } else {
-                        findViewById<TextView>(R.id.textViewEmail).visibility = TextView.VISIBLE
-                    }
-                } else {
-                    findViewById<TextView>(R.id.textViewEmail).visibility = TextView.INVISIBLE
-                }
-            }
-
-        })
+        validationPassword(findViewById(R.id.editTextPassword), findViewById(R.id.textViewPassword))
+        validationEmail(findViewById(R.id.editTextEmail), findViewById(R.id.textViewEmail))
 
 
         findViewById<Button>(R.id.buttonRegister).setOnClickListener {
