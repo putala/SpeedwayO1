@@ -15,11 +15,8 @@ import pl.putala.speedwayo1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-
     private val TAG: String = "TAG"
 
-
-//
 //    val buttonRegister: Button = findViewById<Button>(R.id.buttonRegister)
 //    val buttonSingIn: Button = findViewById<Button>(R.id.buttonSingIn)
 //    val editTextPassword: EditText = findViewById<EditText>(R.id.editTextPassword)
@@ -36,7 +33,6 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
 
 
 //
