@@ -12,7 +12,7 @@ class ExampleAdapter(private val exampleList: List<ExampleItem>) : RecyclerView.
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExampleViewHolder {
 
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.example_item, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_contest, parent, false)
         return  ExampleViewHolder(itemView)
     }
 

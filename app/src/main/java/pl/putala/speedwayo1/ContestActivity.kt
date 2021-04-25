@@ -3,6 +3,7 @@ package pl.putala.speedwayo1
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -21,20 +22,16 @@ class ContestActivity : AppCompatActivity() {
         findViewById<RecyclerView>(R.id.recyclerViewTypes).setHasFixedSize(true)
 
 
-        findViewById<Button>(R.id.action_settings1).setOnClickListener {
-            startActivity(Intent(this, ContestActivity::class.java))
-            Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
-        }
-
-        findViewById<Button>(R.id.action_settings2).setOnClickListener {
-            startActivity(Intent(this, RankingActivity::class.java))
-            Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
-        }
-
-        findViewById<Button>(R.id.action_settings3).setOnClickListener {
-            startActivity(Intent(this, SettingsActivity::class.java))
-            Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
-        }
+//
+//        findViewById<Button>(R.id.action_settings2).setOnClickListener {
+//            startActivity(Intent(this, RankingActivity::class.java))
+//            Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
+//        }
+//
+//        findViewById<Button>(R.id.action_settings3).setOnClickListener {
+//            startActivity(Intent(this, SettingsActivity::class.java))
+//            Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
+//        }
 
     }
 
@@ -43,6 +40,7 @@ class ContestActivity : AppCompatActivity() {
         // Inflate the menu; this adds items to the action bar if it is present.
         // Napompuj menu; spowoduje to dodanie elementów do paska akcji, jeśli jest obecny.
         menuInflater.inflate(R.menu.menu_main, menu)
+
         return true
     }
 
@@ -73,6 +71,7 @@ class ContestActivity : AppCompatActivity() {
         return list
     }
 
+    fun openContest(item: MenuItem) {}
 
 
 }

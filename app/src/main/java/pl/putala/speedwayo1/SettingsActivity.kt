@@ -12,16 +12,16 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
 
 
-
-        findViewById<Button>(R.id.action_settings1).setOnClickListener {
-            startActivity(Intent(this, ContestActivity::class.java))
-            Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
-        }
-
-        findViewById<Button>(R.id.action_settings2).setOnClickListener {
-            startActivity(Intent(this, RankingActivity::class.java))
-            Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
-        }
+//
+//        findViewById<Button>(R.id.action_settings1).setOnClickListener {
+//            startActivity(Intent(this, ContestActivity::class.java))
+//            Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
+//        }
+//
+//        findViewById<Button>(R.id.action_settings2).setOnClickListener {
+//            startActivity(Intent(this, RankingActivity::class.java))
+//            Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
+//        }
 
 
     }

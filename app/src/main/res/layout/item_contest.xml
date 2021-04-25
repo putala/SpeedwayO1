@@ -72,7 +72,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="94dp"
             android:text="04.06.2021  18:00"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textStyle="bold"/>
 
         <SeekBar
             android:id="@+id/seekBarTyping"

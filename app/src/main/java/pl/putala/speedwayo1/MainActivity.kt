@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -27,22 +28,8 @@ class MainActivity : AppCompatActivity() {
 
         Log.d(TAG, "MainActivity -> onCreate")
 
-
         validationPassword(findViewById(R.id.editTextPassword), findViewById(R.id.textViewPassword))
         validationEmail(findViewById(R.id.editTextEmail), findViewById(R.id.textViewEmail))
-
-
-
-
-        findViewById<Button>(R.id.buttonSingIn).setOnClickListener {
-            startActivity(Intent(this, ContestActivity::class.java))
-            Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
-        }
-
-        findViewById<Button>(R.id.buttonSingIn2).setOnClickListener {
-            startActivity(Intent(this, MainActivity2::class.java))
-            Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
-        }
 
     }
 
@@ -92,6 +79,34 @@ class MainActivity : AppCompatActivity() {
         super.onRestart()
         Log.d(TAG, "MainActivity -> onRestart")
     }
+
+
+    fun singIn(view: View) {
+        startActivity(Intent(this, ContestActivity::class.java))
+        Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
+    }
+
+    fun singIn2(view: View) {
+        startActivity(Intent(this, MainActivity2::class.java))
+        Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
+    }
+
+    fun register(view: View) {
+        startActivity(Intent(this, RegisterActivity::class.java))
+        Toast.makeText(this, "Register.", Toast.LENGTH_SHORT).show()
+    }
+
+    fun ranking(view: View) {
+        startActivity(Intent(this, RankingActivity::class.java))
+        Toast.makeText(this, "Ranking.", Toast.LENGTH_SHORT).show()
+    }
+
+    fun settings(view: View) {
+        startActivity(Intent(this, SettingsActivity::class.java))
+        Toast.makeText(this, "Settings.", Toast.LENGTH_SHORT).show()
+    }
+
+    fun brudnopis(view: View) {}
 
 
 }

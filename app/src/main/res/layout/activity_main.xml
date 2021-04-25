@@ -66,10 +66,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
+
+
     <Button
         android:id="@+id/buttonRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="register"
         android:text="@string/register"
         android:layout_marginTop="96dp"
         android:layout_marginStart="48dp"
@@ -81,6 +84,7 @@
         android:id="@+id/buttonSingIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="singIn"
         android:text="@string/singIn"
         android:layout_marginTop="96dp"
         android:layout_marginEnd="48dp"
@@ -92,11 +96,49 @@
         android:id="@+id/buttonSingIn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/singIn"
-        android:layout_marginTop="156dp"
+        android:onClick="singIn2"
+        android:text="Sing In B"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSingIn" />
+
+
+    <Button
+        android:id="@+id/buttonRanking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="ranking"
+        android:text="Ranking"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSingIn2" />
+
+
+    <Button
+        android:id="@+id/buttonSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="settings"
+        android:text="Settings"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRanking" />
+
+
+    <Button
+        android:id="@+id/buttonBrudnopis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="brudnopis"
+        android:text="Brudnopis"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRanking" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
