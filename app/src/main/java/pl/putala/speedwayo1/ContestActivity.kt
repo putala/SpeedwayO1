@@ -1,11 +1,8 @@
 package pl.putala.speedwayo1
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,8 +14,8 @@ class ContestActivity : AppCompatActivity() {
 
         val exampleList = generateDummyList(50)
 
-        findViewById<RecyclerView>(R.id.recyclerViewTypes).adapter = ExampleAdapter(exampleList)
         findViewById<RecyclerView>(R.id.recyclerViewTypes).layoutManager = LinearLayoutManager(this)
+        findViewById<RecyclerView>(R.id.recyclerViewTypes).adapter = ContestAdapter(exampleList)
         findViewById<RecyclerView>(R.id.recyclerViewTypes).setHasFixedSize(true)
 
 
