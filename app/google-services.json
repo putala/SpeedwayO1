@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "672810890263",
+    "project_id": "basespeedwaya",
+    "storage_bucket": "basespeedwaya.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672810890263:android:614723bee31d7c04cb9852",
+        "android_client_info": {
+          "package_name": "pl.putala.speedwayo1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "672810890263-0sfr5vac4dbbgv2ffbdgterq7vgu0den.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiHQNx5DmhrKhtYZGdK8IoPVcMpOK4Kps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "672810890263-0sfr5vac4dbbgv2ffbdgterq7vgu0den.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

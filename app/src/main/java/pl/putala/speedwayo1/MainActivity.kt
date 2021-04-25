@@ -3,15 +3,10 @@ package pl.putala.speedwayo1
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
-import pl.putala.speedwayo1.databinding.ActivityMainBinding
+import pl.putala.speedwayo1.smieci.MainActivity2
 
 class MainActivity : AppCompatActivity() {
 

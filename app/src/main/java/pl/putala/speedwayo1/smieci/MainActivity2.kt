@@ -1,9 +1,10 @@
-package pl.putala.speedwayo1
+package pl.putala.speedwayo1.smieci
 
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import pl.putala.speedwayo1.R
 
 class MainActivity2 : AppCompatActivity() {
 

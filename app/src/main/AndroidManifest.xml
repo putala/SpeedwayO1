@@ -13,7 +13,7 @@
         <activity android:name=".SettingsActivity" />
         <activity android:name=".RankingActivity" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".smieci.MainActivity2"
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.SpeedwayO1.NoActionBar" />
         <activity android:name=".ContestActivity" />
