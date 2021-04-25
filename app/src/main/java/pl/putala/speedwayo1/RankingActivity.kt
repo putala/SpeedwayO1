@@ -10,9 +10,12 @@ class RankingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ranking)
 
-        findViewById<RecyclerView>(R.id.recyclerViewTypes).layoutManager = LinearLayoutManager(this)
-        findViewById<RecyclerView>(R.id.recyclerViewTypes).adapter = ContestAdapter(exampleList)
-        findViewById<RecyclerView>(R.id.recyclerViewTypes).setHasFixedSize(true)
+//        val exampleList2 = generateDummyList(5)
+
+        findViewById<RecyclerView>(R.id.recyclerViewRanking).layoutManager = LinearLayoutManager(this)
+        findViewById<RecyclerView>(R.id.recyclerViewRanking).adapter = ContestAdapter()
+
+//        findViewById<RecyclerView>(R.id.recyclerViewRanking).setHasFixedSize(true)
 
 
 

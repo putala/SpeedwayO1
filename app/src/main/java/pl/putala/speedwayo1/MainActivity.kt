@@ -11,10 +11,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import pl.putala.speedwayo1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     private val TAG: String = "TAG"
+
 
 //
 //    val buttonRegister: Button = findViewById<Button>(R.id.buttonRegister)
@@ -25,11 +28,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
         Log.d(TAG, "MainActivity -> onCreate")
 
-        validationPassword(findViewById(R.id.editTextPassword), findViewById(R.id.textViewPassword))
-        validationEmail(findViewById(R.id.editTextEmail), findViewById(R.id.textViewEmail))
+        validationPassword(binding.editTextPassword, binding.textViewPassword)
+        validationEmail(binding.editTextEmail, binding.textViewEmail)
+
 
     }
 
@@ -106,7 +111,10 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "Settings.", Toast.LENGTH_SHORT).show()
     }
 
-    fun brudnopis(view: View) {}
+    fun brudnopis(view: View) {
+        startActivity(Intent(this, BrudnopisActivity::class.java))
+        Toast.makeText(this, "Brudnopis.", Toast.LENGTH_SHORT).show()
+    }
 
 
 }
