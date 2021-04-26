@@ -22,4 +22,10 @@
     <string name="invalidNickname">Nickname too short!</string>
     <string name="acceptRegulations">Accept the regulations!</string>
     <string name="passwordNotTheSame">The password is not the same!</string>
+
+    <string-array name="language">
+        <item>English</item>
+        <item>Polish</item>
+        <item>German</item>
+    </string-array>
 </resources>

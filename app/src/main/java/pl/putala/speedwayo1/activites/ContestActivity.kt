@@ -25,17 +25,6 @@ class ContestActivity : AppCompatActivity() {
         findViewById<RecyclerView>(R.id.recyclerViewTypes).adapter = ContestAdapter(exampleList)
         findViewById<RecyclerView>(R.id.recyclerViewTypes).setHasFixedSize(true)
 
-//
-//        findViewById<Button>(R.id.action_settings2).setOnClickListener {
-//            startActivity(Intent(this, RankingActivity::class.java))
-//            Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
-//        }
-//
-//        findViewById<Button>(R.id.action_settings3).setOnClickListener {
-//            startActivity(Intent(this, SettingsActivity::class.java))
-//            Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
-//        }
-
     }
 
 
@@ -47,6 +36,9 @@ class ContestActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
+            R.id.action_contest -> {
+                startActivity(Intent(this, ContestActivity::class.java))
+            }
             R.id.action_ranking -> {
                 startActivity(Intent(this, RankingActivity::class.java))
             }

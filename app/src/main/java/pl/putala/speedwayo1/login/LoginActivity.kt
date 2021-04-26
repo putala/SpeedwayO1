@@ -33,10 +33,18 @@ class LoginActivity : BaseActivity() {
     }
 
 
+
     override fun onStart() {
         super.onStart()
+        isCurrentUser()
         Log.d(TAG, "MainActivity -> onStart")
     }
+
+    private fun isCurrentUser() {
+        fbAuth.currentUser?.let { startApp() }
+    }
+
+
 
     override fun onResume() {
         super.onResume()

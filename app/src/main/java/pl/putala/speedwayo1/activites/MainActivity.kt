@@ -11,8 +11,8 @@ import pl.putala.speedwayo1.login.LoginActivity
 
 class MainActivity : BaseActivity() {
 
-
-    private val fbAuth = FirebaseAuth.getInstance()
+//
+//    private val fbAuth = FirebaseAuth.getInstance()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,17 +20,17 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
     }
 
-
-    override fun onStart() {
-        super.onStart()
-        isCurrentUser()
-    }
-
-    private fun isCurrentUser() {
-        fbAuth.currentUser?.let {auth ->
-            startApp()
-        }
-    }
+//
+//    override fun onStart() {
+//        super.onStart()
+//        isCurrentUser()
+//    }
+//
+//    private fun isCurrentUser() {
+//        fbAuth.currentUser?.let {auth ->
+//            startApp()
+//        }
+//    }
 
 
 

@@ -37,6 +37,9 @@ class RankingActivity : AppCompatActivity() {
             R.id.action_contest -> {
                 startActivity(Intent(this, ContestActivity::class.java))
             }
+            R.id.action_ranking -> {
+                startActivity(Intent(this, RankingActivity::class.java))
+            }
             R.id.action_settings -> {
                 startActivity(Intent(this, SettingsActivity::class.java))
             }

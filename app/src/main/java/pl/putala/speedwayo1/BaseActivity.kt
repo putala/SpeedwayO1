@@ -74,13 +74,25 @@ abstract class BaseActivity : AppCompatActivity() {
 
                 if (email.isFocused && email.length() != 0
                 ) {
+                    var first = false
                     var monkey = false
+                    var dot = false
+                    var end = false
                     for (i in email.text) {
-                        if (i == '@') {
+                        if (dot && i != '@' && i != '.') {
+                            end = true
+                        }
+                        if (monkey && i == '.'){
+                            dot = true
+                        }
+                        if (first && i == '@') {
                             monkey = true
                         }
+                        if (i != '@' && i != '.'){
+                            first = true
+                        }
                     }
-                    if (monkey) {
+                    if (end) {
                         emailWarn.visibility = TextView.INVISIBLE
                     } else {
                         emailWarn.visibility = TextView.VISIBLE
