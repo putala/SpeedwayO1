@@ -5,9 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.google.firebase.auth.FirebaseAuth
 import pl.putala.speedwayo1.R
+import pl.putala.speedwayo1.login.LoginActivity
 
 class SettingsActivity : AppCompatActivity() {
+
+    private val auth = FirebaseAuth.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
@@ -21,7 +26,6 @@ class SettingsActivity : AppCompatActivity() {
 //            startActivity(Intent(this, RankingActivity::class.java))
 //            Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
 //        }
-
 
     }
 
@@ -40,8 +44,9 @@ class SettingsActivity : AppCompatActivity() {
             R.id.action_ranking -> {
                 startActivity(Intent(this, RankingActivity::class.java))
             }
-            R.id.action_settings -> {
-                startActivity(Intent(this, SettingsActivity::class.java))
+            R.id.action_logout -> {
+                auth.signOut()
+                startActivity(Intent(this, LoginActivity::class.java))
             }
         }
         return super.onOptionsItemSelected(item)
