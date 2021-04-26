@@ -1,4 +1,4 @@
-package pl.putala.speedwayo1
+package pl.putala.speedwayo1.activites
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import pl.putala.speedwayo1.R
 
 
 class ContestAdapter(private val exampleList: List<ExampleItem>) : RecyclerView.Adapter<ContestAdapter.ExampleViewHolder>() {

@@ -1,4 +1,4 @@
-package pl.putala.speedwayo1
+package pl.putala.speedwayo1.activites
 
 import android.os.Bundle
 import android.view.Menu
@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import pl.putala.speedwayo1.R
 
 class ContestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

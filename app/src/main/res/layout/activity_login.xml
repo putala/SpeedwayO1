@@ -4,31 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".registration.RegisterActivity">
+    tools:context=".login.LoginActivity">
 
 
     <EditText
-        android:id="@+id/editTextNicknameSave"
-        android:layout_width="0dp"
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="96dp"
-        android:layout_marginEnd="24dp"
-        android:autofillHints="@string/nickname"
-        android:hint="@string/nickname"
-        android:inputType="textEmailAddress"
-        android:selectAllOnFocus="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <EditText
-        android:id="@+id/editTextEmailSave"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="36dp"
         android:layout_marginEnd="24dp"
         android:autofillHints="@string/email"
         android:hint="@string/email"
@@ -37,10 +21,24 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNicknameSave" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:text="@string/invalidMail"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+
 
     <EditText
-        android:id="@+id/editTextPasswordSave"
+        android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -51,62 +49,60 @@
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmailSave" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextConfirmPasswordSave"
+    <TextView
+        android:id="@+id/textViewPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="24dp"
-        android:autofillHints="@string/confirmPassword"
-        android:hint="@string/confirmPassword"
-        android:imeOptions="actionDone"
-        android:inputType="textPassword"
-        android:selectAllOnFocus="true"
+        android:text="@string/passwordTooShort"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordSave" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
-
-    <CheckBox
-        android:id="@+id/checkBoxRegulations"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="24dp"
-        android:text="I accept the regulations."
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPasswordSave"
-        tools:layout_editor_absoluteX="80dp" />
 
 
     <Button
-        android:id="@+id/buttonSave"
+        android:id="@+id/buttonRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:onClick="save"
-        android:layout_marginEnd="48dp"
-        android:text="@string/save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxRegulations" />
-
-    <Button
-        android:id="@+id/buttonCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="cancel"
-        android:layout_marginTop="36dp"
+        android:onClick="register"
+        android:text="@string/register"
+        android:layout_marginTop="96dp"
         android:layout_marginStart="48dp"
-        android:text="@string/cancel"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxRegulations" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+
+    <Button
+        android:id="@+id/buttonSingIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="singIn"
+        android:text="@string/singIn"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+
+    <Button
+        android:id="@+id/buttonSingIn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="singIn2"
+        android:text="Sing In B"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSingIn" />
+
 
 
 

@@ -1,10 +1,8 @@
-package pl.putala.speedwayo1
+package pl.putala.speedwayo1.activites
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.Toast
+import pl.putala.speedwayo1.R
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
