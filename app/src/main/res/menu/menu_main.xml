@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="pl.putala.mynavifour.MainActivity">
+
     <item
+        android:id="@+id/action_contest"
         android:icon="@drawable/ic_baseline_directions_bike_24"
-        android:id="@+id/action_settings1"
         android:title="Typy"
-        app:showAsAction="ifRoom"
-        />
+        app:showAsAction="always" />
+
     <item
+        android:id="@+id/action_ranking"
         android:icon="@drawable/ic_baseline_military_tech_24"
-        android:id="@+id/action_settings2"
         android:title="Ranking"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always"/>
+
     <item
+        android:id="@+id/action_settings"
         android:icon="@drawable/ic_baseline_settings_24"
-        android:id="@+id/action_settings3"
-        android:title="Ustawienia"
-        app:showAsAction="ifRoom" />
+        android:title="Settings"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_logout"
+        android:icon="@drawable/ic_baseline_power_settings_new_24"
+        android:title="Logout"
+        app:showAsAction="always" />
 
 
 </menu>

@@ -1,5 +1,6 @@
 package pl.putala.speedwayo1.activites
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -19,7 +20,6 @@ class ContestActivity : AppCompatActivity() {
         findViewById<RecyclerView>(R.id.recyclerViewTypes).adapter = ContestAdapter(exampleList)
         findViewById<RecyclerView>(R.id.recyclerViewTypes).setHasFixedSize(true)
 
-
 //
 //        findViewById<Button>(R.id.action_settings2).setOnClickListener {
 //            startActivity(Intent(this, RankingActivity::class.java))
@@ -35,13 +35,25 @@ class ContestActivity : AppCompatActivity() {
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        // Napompuj menu; spowoduje to dodanie elementów do paska akcji, jeśli jest obecny.
         menuInflater.inflate(R.menu.menu_main, menu)
-
+        super.onCreateOptionsMenu(menu)
         return true
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.action_contest -> {
+                startActivity(Intent(this, ContestActivity::class.java))
+            }
+            R.id.action_ranking -> {
+                startActivity(Intent(this, RankingActivity::class.java))
+            }
+            R.id.action_settings -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     private fun generateDummyList(size: Int): List<ExampleItem> {
 
@@ -69,7 +81,8 @@ class ContestActivity : AppCompatActivity() {
         return list
     }
 
-    fun openContest(item: MenuItem) {}
+//
+//    fun openContest(item: MenuItem) {}
 
 
 }
