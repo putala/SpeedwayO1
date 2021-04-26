@@ -26,7 +26,7 @@
             android:theme="@style/Theme.SpeedwayO1.NoActionBar" />
         <activity android:name=".activites.ContestActivity" />
 
-        <activity android:name=".registration.RegisterActivity" />
+        <activity android:name=".registration.RegistrationActivity" />
 
         <activity android:name=".login.LoginActivity">
 

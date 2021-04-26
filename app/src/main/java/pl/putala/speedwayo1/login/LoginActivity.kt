@@ -1,7 +1,6 @@
 package pl.putala.speedwayo1.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -9,22 +8,17 @@ import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import pl.putala.speedwayo1.BaseActivity
-import pl.putala.speedwayo1.activites.ContestActivity
 import pl.putala.speedwayo1.R
-import pl.putala.speedwayo1.registration.RegisterActivity
+import pl.putala.speedwayo1.registration.RegistrationActivity
 import pl.putala.speedwayo1.smieci.MainActivity2
-import pl.putala.speedwayo1.validationEmail
-import pl.putala.speedwayo1.validationPassword
+
 
 class LoginActivity : BaseActivity() {
 
     private val TAG: String = "TAG"
-    private val fbAuth = FirebaseAuth.getInstance()
-    private val emailET : EditText = findViewById(R.id.editTextEmail)
-    private val email = emailET.text?.trim().toString()
-    private val passET : EditText = findViewById(R.id.editTextPassword)
-    private val pass = emailET.text?.trim().toString()
     private val LOG_DEBUG = "LOG_DEBUG"
+//    private var validtion: Boolean = false
+    private val fbAuth = FirebaseAuth.getInstance()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,11 +27,10 @@ class LoginActivity : BaseActivity() {
 
         Log.d(TAG, "MainActivity -> onCreate")
 
-        validationPassword(passET, findViewById(R.id.textViewPassword))
-        validationEmail(emailET, findViewById(R.id.textViewEmail))
+        validationEmail(findViewById(R.id.editTextEmail), findViewById(R.id.textViewEmail))
+        validationPassword(findViewById(R.id.editTextPassword), findViewById(R.id.textViewPassword))
 
     }
-
 
 
     override fun onStart() {
@@ -71,35 +64,36 @@ class LoginActivity : BaseActivity() {
     }
 
 
-
     fun register(view: View) {
-        startActivity(Intent(this, RegisterActivity::class.java))
+        startActivity(Intent(this, RegistrationActivity::class.java))
         Toast.makeText(this, "Register.", Toast.LENGTH_SHORT).show()
     }
 
+
     fun singIn(view: View) {
+        val emailET: EditText = findViewById(R.id.editTextEmail)
+        val email = emailET.text?.trim().toString()
+        val passET: EditText = findViewById(R.id.editTextPassword)
+        val pass = emailET.text?.trim().toString()
 
         fbAuth.signInWithEmailAndPassword(email, pass)
-            .addOnSuccessListener {
-
-                startApp()
-
-                Toast.makeText(this, email, Toast.LENGTH_SHORT).show()
+            .addOnSuccessListener { authRes ->
+                if (authRes.user != null) {
+                    startApp()
+                    Toast.makeText(this, email, Toast.LENGTH_SHORT).show()
+                }
             }
             .addOnFailureListener { exc ->
+                Toast.makeText(this, "Upsss... Coś poszło nie tak!", Toast.LENGTH_SHORT).show()
                 Log.d(LOG_DEBUG, exc.message.toString())
             }
-
-
     }
-
 
 
     fun singIn2(view: View) {
         startActivity(Intent(this, MainActivity2::class.java))
         Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
     }
-
 
 
 }
