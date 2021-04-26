@@ -29,7 +29,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="24dp"
-        android:text="@string/invalidMail"
+        android:text="@string/invalidNickname"
         android:textColor="@color/red"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +89,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="24dp"
-        android:text="@string/invalidMail"
+        android:text="@string/passwordTooShort"
         android:textColor="@color/red"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -119,7 +119,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="24dp"
-        android:text="@string/invalidMail"
+        android:text="@string/passwordNotTheSame"
         android:textColor="@color/red"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -141,11 +141,26 @@
         tools:layout_editor_absoluteX="80dp" />
 
 
+    <TextView
+        android:id="@+id/textViewRegulations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:text="@string/acceptRegulations"
+        android:textColor="@color/red"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxRegulations" />
+
+
     <Button
         android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="72dp"
         android:onClick="save"
         android:layout_marginEnd="48dp"
         android:text="@string/save"
@@ -157,7 +172,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="cancel"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="72dp"
         android:layout_marginStart="48dp"
         android:text="@string/cancel"
         app:layout_constraintStart_toStartOf="parent"

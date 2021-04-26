@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import pl.putala.speedwayo1.BaseActivity
@@ -17,7 +18,6 @@ class LoginActivity : BaseActivity() {
 
     private val TAG: String = "TAG"
     private val LOG_DEBUG = "LOG_DEBUG"
-//    private var validtion: Boolean = false
     private val fbAuth = FirebaseAuth.getInstance()
 
 
@@ -28,7 +28,7 @@ class LoginActivity : BaseActivity() {
         Log.d(TAG, "MainActivity -> onCreate")
 
         validationEmail(findViewById(R.id.editTextEmail), findViewById(R.id.textViewEmail))
-        validationPassword(findViewById(R.id.editTextPassword), findViewById(R.id.textViewPassword))
+        validationText(findViewById(R.id.editTextPassword), findViewById(R.id.textViewPassword))
 
     }
 
@@ -71,22 +71,24 @@ class LoginActivity : BaseActivity() {
 
 
     fun singIn(view: View) {
-        val emailET: EditText = findViewById(R.id.editTextEmail)
-        val email = emailET.text?.trim().toString()
-        val passET: EditText = findViewById(R.id.editTextPassword)
-        val pass = emailET.text?.trim().toString()
+        val email = (findViewById<EditText>(R.id.editTextEmail)).text?.trim().toString()
+        val pass = (findViewById<EditText>(R.id.editTextPassword)).text?.trim().toString()
 
-        fbAuth.signInWithEmailAndPassword(email, pass)
-            .addOnSuccessListener { authRes ->
-                if (authRes.user != null) {
-                    startApp()
-                    Toast.makeText(this, email, Toast.LENGTH_SHORT).show()
+        if (findViewById<TextView>(R.id.textViewEmail).visibility == TextView.INVISIBLE
+            && findViewById<TextView>(R.id.textViewPassword).visibility == TextView.INVISIBLE
+            && email.isNotEmpty() && pass.isNotEmpty()) {
+            fbAuth.signInWithEmailAndPassword(email, pass)
+                .addOnSuccessListener { authRes ->
+                    if (authRes.user != null) {
+                        startApp()
+                        Toast.makeText(this, "Zalogowany !!!!!", Toast.LENGTH_SHORT).show()
+                    }
                 }
-            }
-            .addOnFailureListener { exc ->
-                Toast.makeText(this, "Upsss... Coś poszło nie tak!", Toast.LENGTH_SHORT).show()
-                Log.d(LOG_DEBUG, exc.message.toString())
-            }
+                .addOnFailureListener { exc ->
+                    Toast.makeText(this, "Upsss... Coś poszło nie tak!", Toast.LENGTH_SHORT).show()
+                    Log.d(LOG_DEBUG, exc.message.toString())
+                }
+        }
     }
 
 

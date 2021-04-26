@@ -11,34 +11,59 @@ import pl.putala.speedwayo1.activites.ContestActivity
 abstract class BaseActivity : AppCompatActivity() {
 
 
+    protected fun validationText(text: EditText, textWarn: TextView) {
+        text.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
-    fun validationPassword(password: EditText, passwordWarn: TextView) {
-//    var goodPassword : Boolean = false
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                if (text.isFocused && text.length() > 0 && text.length() < 5
+                ) {
+                    textWarn.visibility = TextView.VISIBLE
+                } else {
+                    textWarn.visibility = TextView.INVISIBLE
+                }
+            }
+        })
+    }
+
+
+    protected fun validationPassword(
+        password: EditText,
+        confirmPassword: EditText,
+        confirmWarn: TextView
+    ) {
         password.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
-
-                if (password.isFocused && password.length() > 0 && password.length() < 5
-                ) {
-                    passwordWarn.visibility = TextView.VISIBLE
-//                goodPassword = false
+                if ( password.length() > 0 && confirmPassword.length() > 0 && password.isFocused && confirmPassword.text.toString() != password.text.toString()) {
+                    confirmWarn.visibility = TextView.VISIBLE
                 } else {
-                    passwordWarn.visibility = TextView.INVISIBLE
-//                goodPassword = true
+                    confirmWarn.visibility = TextView.INVISIBLE
                 }
             }
         })
-//    return goodPassword
+        confirmPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                if ( password.length() > 0 && confirmPassword.length() > 0 && confirmPassword.isFocused && confirmPassword.text.toString() != password.text.toString()) {
+                    confirmWarn.visibility = TextView.VISIBLE
+                } else {
+                    confirmWarn.visibility = TextView.INVISIBLE
+                }
+            }
+        })
     }
 
 
-
-    fun validationEmail(email: EditText, emailWarn: TextView) {
-
-//    var goodEmail : Boolean = false
+    protected fun validationEmail(email: EditText, emailWarn: TextView) {
 
         email.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -57,26 +82,18 @@ abstract class BaseActivity : AppCompatActivity() {
                     }
                     if (monkey) {
                         emailWarn.visibility = TextView.INVISIBLE
-//                    goodEmail = true
                     } else {
                         emailWarn.visibility = TextView.VISIBLE
-//                    goodEmail = false
                     }
                 } else {
                     emailWarn.visibility = TextView.INVISIBLE
-//                goodEmail = true
                 }
             }
-
         })
-//    return goodEmail
     }
 
 
-
-
-
-    protected fun startApp(){
+    protected fun startApp() {
         val intent = Intent(applicationContext, ContestActivity::class.java).apply {
             flags = (Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         }
