@@ -1,4 +1,4 @@
-package pl.putala.speedwayo1.activites
+package pl.putala.speedwayo1.contest
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,11 +9,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import pl.putala.speedwayo1.R
+import pl.putala.speedwayo1.ranking.RankingActivity
 import pl.putala.speedwayo1.login.LoginActivity
+import pl.putala.speedwayo1.profile.ProfileActivity
 
 class ContestActivity : AppCompatActivity() {
 
     private val auth = FirebaseAuth.getInstance()
+
+//    private val contestVm by viewModels<ContestViewModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +47,7 @@ class ContestActivity : AppCompatActivity() {
                 startActivity(Intent(this, RankingActivity::class.java))
             }
             R.id.action_settings -> {
-                startActivity(Intent(this, SettingsActivity::class.java))
+                startActivity(Intent(this, ProfileActivity::class.java))
             }
             R.id.action_logout -> {
                 auth.signOut()
@@ -52,6 +56,8 @@ class ContestActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 
     private fun generateDummyList(size: Int): List<ExampleItem> {
 
@@ -78,9 +84,6 @@ class ContestActivity : AppCompatActivity() {
 
         return list
     }
-
-//
-//    fun openContest(item: MenuItem) {}
 
 
 }

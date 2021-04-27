@@ -13,14 +13,14 @@
 
         </activity>
         <activity android:name=".BrudnopisActivity" />
-        <activity android:name=".activites.SettingsActivity" />
-        <activity android:name=".activites.RankingActivity" />
+        <activity android:name=".profile.ProfileActivity" />
+        <activity android:name=".ranking.RankingActivity" />
 
         <activity
             android:name=".smieci.MainActivity2"
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.SpeedwayO1.NoActionBar" />
-        <activity android:name=".activites.ContestActivity" />
+        <activity android:name=".contest.ContestActivity" />
 
         <activity android:name=".registration.RegistrationActivity" />
 

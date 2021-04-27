@@ -1,13 +1,14 @@
 package pl.putala.speedwayo1.activites
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
 import pl.putala.speedwayo1.*
+import pl.putala.speedwayo1.contest.ContestActivity
 import pl.putala.speedwayo1.login.LoginActivity
+import pl.putala.speedwayo1.ranking.RankingActivity
+import pl.putala.speedwayo1.profile.ProfileActivity
 
 class MainActivity : BaseActivity() {
 
@@ -46,7 +47,7 @@ class MainActivity : BaseActivity() {
     }
 
     fun settings(view: View) {
-        startActivity(Intent(this, SettingsActivity::class.java))
+        startActivity(Intent(this, ProfileActivity::class.java))
         Toast.makeText(this, "Settings.", Toast.LENGTH_SHORT).show()
     }
 

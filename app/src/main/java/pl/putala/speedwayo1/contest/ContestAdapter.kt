@@ -1,4 +1,4 @@
-package pl.putala.speedwayo1.activites
+package pl.putala.speedwayo1.contest
 
 import android.view.LayoutInflater
 import android.view.View
