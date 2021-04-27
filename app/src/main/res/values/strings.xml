@@ -19,9 +19,12 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="invalidNickname">Nickname too short!</string>
+    <string name="invalidName">Name too short!</string>
     <string name="acceptRegulations">Accept the regulations!</string>
     <string name="passwordNotTheSame">The password is not the same!</string>
+    <string name="regulations">I accept the regulations.</string>
+    <string name="language">Language:</string>
+    <string name="points">Points:</string>
 
     <string-array name="language">
         <item>English</item>

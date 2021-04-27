@@ -8,7 +8,7 @@
 
 
     <EditText
-        android:id="@+id/editTextNicknameSave"
+        android:id="@+id/editTextNameSave"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -23,18 +23,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewNicknameSave"
+        android:id="@+id/textViewNameSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="24dp"
-        android:text="@string/invalidNickname"
+        android:text="@string/invalidName"
         android:textColor="@color/red"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNicknameSave" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNameSave" />
 
     <EditText
         android:id="@+id/editTextEmailSave"
@@ -50,7 +50,7 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNicknameSave" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNameSave" />
 
     <TextView
         android:id="@+id/textViewEmailSave"
@@ -134,7 +134,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="24dp"
-        android:text="I accept the regulations."
+        android:text="@string/regulations"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPasswordSave"

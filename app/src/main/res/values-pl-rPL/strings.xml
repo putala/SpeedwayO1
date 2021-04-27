@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SpeedwayO1</string>
+    <string name="email">Email</string>
+    <string name="password">Hasło</string>
+    <string name="singIn">Logowanie</string>
+    <string name="register">Rejestracja</string>
+    <string name="nickname">Imię</string>
+    <string name="confirmPassword">Powtórzone hasło</string>
+    <string name="save">Zapisz</string>
+    <string name="cancel">Anuluj</string>
+    <string name="passwordTooShort">Za krótkie hasło!</string>
+    <string name="invalidMail">Niepoprawny mail</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Nest</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="invalidName">Za krótkie imię!</string>
+    <string name="acceptRegulations">Zaakceptuj regulamin</string>
+    <string name="passwordNotTheSame">Twoje hasła nie są takie same!</string>
+    <string name="regulations">Akceptuję regulamin.</string>
+    <string name="language">Język:</string>
+    <string name="points">Punkty:</string>
+</resources>

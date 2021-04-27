@@ -24,8 +24,8 @@ class RegistrationActivity : BaseActivity() {
         setContentView(R.layout.activity_registration)
 
         validationText(
-            findViewById(R.id.editTextNicknameSave),
-            findViewById(R.id.textViewNicknameSave)
+            findViewById(R.id.editTextNameSave),
+            findViewById(R.id.textViewNameSave)
         )
         validationEmail(
             findViewById(R.id.editTextEmailSave),
@@ -45,7 +45,7 @@ class RegistrationActivity : BaseActivity() {
 
     fun save(view: View) {
 
-        val nicknameSave = (findViewById<EditText>(R.id.editTextNicknameSave))
+        val nicknameSave = (findViewById<EditText>(R.id.editTextNameSave))
             .text?.trim().toString()
         val emailSave = (findViewById<EditText>(R.id.editTextEmailSave))
             .text?.trim().toString()
@@ -57,7 +57,7 @@ class RegistrationActivity : BaseActivity() {
         if (findViewById<CheckBox>(R.id.checkBoxRegulations).isChecked) {
             findViewById<TextView>(R.id.textViewRegulations).visibility = TextView.INVISIBLE
 
-            if (findViewById<TextView>(R.id.textViewNicknameSave).visibility == TextView.INVISIBLE
+            if (findViewById<TextView>(R.id.textViewNameSave).visibility == TextView.INVISIBLE
                 && findViewById<TextView>(R.id.textViewEmailSave).visibility == TextView.INVISIBLE
                 && findViewById<TextView>(R.id.textViewPasswordSave).visibility == TextView.INVISIBLE
                 && findViewById<TextView>(R.id.textViewConfirmPasswordSave).visibility == TextView.INVISIBLE
