@@ -44,8 +44,6 @@ class ContestAdapter(private val exampleList: List<ExampleItem>) : RecyclerView.
         val textView4: TextView = itemView.findViewById(R.id.textViewTypes)
         val textView5: TextView = itemView.findViewById(R.id.textViewDate)
 
-
-
     }
 
 

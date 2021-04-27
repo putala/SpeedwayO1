@@ -3,20 +3,30 @@ package pl.putala.speedwayo1.profile
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.activity.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import com.google.firebase.auth.FirebaseAuth
 import pl.putala.speedwayo1.R
 import pl.putala.speedwayo1.contest.ContestActivity
+import pl.putala.speedwayo1.data.User
 import pl.putala.speedwayo1.ranking.RankingActivity
 import pl.putala.speedwayo1.login.LoginActivity
 
 class ProfileActivity : AppCompatActivity() {
 
+
     private val profileVm by viewModels<ProfileViewModel>()
+    //    private lateinit var viewModel: ProfileViewModel
+
+    private val PROFILE_DEBUG = "PROFILE_DEBUG"
     private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +38,16 @@ class ProfileActivity : AppCompatActivity() {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, language)
         spinner.adapter = adapter
 
+
+        profileVm.user.observe(this, Observer { user -> bindUserData(user) })
+
+    }
+
+
+
+
+    private fun bindUserData(user: User) {
+        Log.d(PROFILE_DEBUG, user.toString())
     }
 
 

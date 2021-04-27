@@ -18,7 +18,7 @@ class FirebaseRepository {
     fun getUserData(): LiveData<User>{
         val cloudResult = MutableLiveData<User>()
         val uid = auth.currentUser?.uid
-        cloud.collection("user")
+        cloud.collection("users")
             .document(uid!!)
             .get()
             .addOnSuccessListener {
