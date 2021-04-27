@@ -42,15 +42,16 @@ class ContestAdapter: RecyclerView.Adapter<ContestViewHolder>() {
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
                 // write custom code for progress is changed
-                textViewTypeResult.text = seek.progress.toString()
+                textViewTypeResult.text = ((20 + (seek.progress / 2)).toString()
+                        + " : " + (70 - (seek.progress / 2)).toString())
             }
             override fun onStartTrackingTouch(seek: SeekBar) {
                 // write custom code for progress is started
-                textViewTypeResult.text = seek.progress.toString()
+//                textViewTypeResult.text = seek.progress.toString()
             }
             override fun onStopTrackingTouch(seek: SeekBar) {
                 // write custom code for progress is stopped
-                textViewTypeResult.text = seek.progress.toString()
+//                textViewTypeResult.text = seek.progress.toString()
             }
         })
 
