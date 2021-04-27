@@ -38,26 +38,6 @@ class ProfileActivity : AppCompatActivity() {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, language)
         spinner.adapter = adapter
 
-
-
-        val seek = findViewById<SeekBar>(R.id.seekBarProbny)
-        seek?.setOnSeekBarChangeListener(object :
-            SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
-                // write custom code for progress is changed
-                findViewById<TextView>(R.id.textViewProbny).text = seek.progress.toString()
-            }
-            override fun onStartTrackingTouch(seek: SeekBar) {
-                // write custom code for progress is started
-                findViewById<TextView>(R.id.textViewProbny).text = seek.progress.toString()
-            }
-            override fun onStopTrackingTouch(seek: SeekBar) {
-                // write custom code for progress is stopped
-                findViewById<TextView>(R.id.textViewProbny).text = seek.progress.toString()
-            }
-        })
-
-
     }
 
 

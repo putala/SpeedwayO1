@@ -21,42 +21,16 @@ class ContestActivity : AppCompatActivity() {
 
     private val auth = FirebaseAuth.getInstance()
 
-
 //    private val contestVm by viewModels<ContestViewModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contest)
 
-        val exampleList = generateDummyList(8)
 
         findViewById<RecyclerView>(R.id.recyclerViewTypes).layoutManager = LinearLayoutManager(this)
-        findViewById<RecyclerView>(R.id.recyclerViewTypes).adapter = ContestAdapter(exampleList)
-        findViewById<RecyclerView>(R.id.recyclerViewTypes).setHasFixedSize(true)
-
-
-
-//
-//
-//        val seek = findViewById<SeekBar>(R.id.seekBarProbny)
-//        seek?.setOnSeekBarChangeListener(object :
-//            SeekBar.OnSeekBarChangeListener {
-//            override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
-//                // write custom code for progress is changed
-//                findViewById<TextView>(R.id.textViewProbny).text = seek.progress.toString()
-//            }
-//            override fun onStartTrackingTouch(seek: SeekBar) {
-//                // write custom code for progress is started
-//                findViewById<TextView>(R.id.textViewProbny).text = seek.progress.toString()
-//            }
-//            override fun onStopTrackingTouch(seek: SeekBar) {
-//                // write custom code for progress is stopped
-//                findViewById<TextView>(R.id.textViewProbny).text = seek.progress.toString()
-//            }
-//        })
-
-
-
+        findViewById<RecyclerView>(R.id.recyclerViewTypes).adapter = ContestAdapter()
+//        findViewById<RecyclerView>(R.id.recyclerViewTypes).setHasFixedSize(true)
 
 
 
@@ -90,90 +64,6 @@ class ContestActivity : AppCompatActivity() {
     }
 
 
-    private fun generateDummyList(size: Int): List<ContestItem> {
-
-        val list = ArrayList<ContestItem>()
-
-        for (i in 0 until size) {
-            val item = ContestItem(
-                teamsImage[match[i].substring(0, 2).toInt()],
-                teamsImage[match[i].substring(2, 4).toInt()],
-                "" + teams[match[i].substring(0, 2).toInt()],
-                result[i].substring(0, 2) + " : " + result[i].substring(2, 4),
-                "" + teams[match[i].substring(2, 4).toInt()],
-                "45 : 45",
-                "01.01.2021"
-            )
-            list += item
-        }
-
-        return list
-    }
-
-
-//
-//
-//    protected fun setingResult(
-//        suwak: SeekBar,
-//        ujscie: TextView
-//    ) {
-//        suwak.setOnSeekBarChangeListener(
-//
-//            ujscie.text = suwak.progress.toString()
-//
-////            object : SeekBar.OnSeekBarChangeListener {
-////
-////
-////
-////                override fun onProgressChanged(
-////                    seekBar: SeekBar?,
-////                    progress: Int,
-////                    fromUser: Boolean
-////                ) {
-////
-////                }
-////
-////                override fun onStartTrackingTouch(seekBar: SeekBar?) {
-////                    //
-////                }
-////
-////                override fun onStopTrackingTouch(seekBar: SeekBar?) {
-////                    //
-////                }
-////
-////            }
-//
-//        )
-
-
-//
-//        suwak.addTextChangedListener(object : TextWatcher {
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-//
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-//
-//            override fun afterTextChanged(s: Editable?) {
-//                if ( suwak.length() > 0 && confirmPassword.length() > 0 && suwak.isFocused && confirmPassword.text.toString() != suwak.text.toString()) {
-//                    confirmWarn.visibility = TextView.VISIBLE
-//                } else {
-//                    confirmWarn.visibility = TextView.INVISIBLE
-//                }
-//            }
-//        })
-//        confirmPassword.addTextChangedListener(object : TextWatcher {
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-//
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-//
-//            override fun afterTextChanged(s: Editable?) {
-//                if ( suwak.length() > 0 && confirmPassword.length() > 0 && confirmPassword.isFocused && confirmPassword.text.toString() != suwak.text.toString()) {
-//                    confirmWarn.visibility = TextView.VISIBLE
-//                } else {
-//                    confirmWarn.visibility = TextView.INVISIBLE
-//                }
-//            }
-//        })
-//    }
 
 
 }

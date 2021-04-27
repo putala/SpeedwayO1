@@ -51,11 +51,6 @@
             android:textSize="32sp"
             android:textStyle="bold" />
 
-        <SeekBar
-            android:id="@+id/seekBarAlfa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
 
     </RelativeLayout>
 
