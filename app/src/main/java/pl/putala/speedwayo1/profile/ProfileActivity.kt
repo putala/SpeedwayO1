@@ -8,11 +8,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import androidx.lifecycle.observe
 import com.google.firebase.auth.FirebaseAuth
 import pl.putala.speedwayo1.R
 import pl.putala.speedwayo1.contest.ContestActivity
@@ -32,6 +30,7 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        profileVm.user.observe(this, Observer { user -> bindUserData(user) })
 
         val language = resources.getStringArray(R.array.language)
         val spinner = findViewById<Spinner>(R.id.spinnerLanguage)
@@ -39,15 +38,16 @@ class ProfileActivity : AppCompatActivity() {
         spinner.adapter = adapter
 
 
-        profileVm.user.observe(this, Observer { user -> bindUserData(user) })
-
     }
-
 
 
 
     private fun bindUserData(user: User) {
         Log.d(PROFILE_DEBUG, user.toString())
+        findViewById<TextView>(R.id.textViewNameS).text = user.name
+        findViewById<TextView>(R.id.textViewEmailS).text = user.email
+        findViewById<TextView>(R.id.textViewPointsSumS).text = user.sumOfPoints
+
     }
 
 

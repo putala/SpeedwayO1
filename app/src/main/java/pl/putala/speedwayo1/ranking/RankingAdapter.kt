@@ -18,8 +18,8 @@ class RankingAdapter: RecyclerView.Adapter<MyViewHolder>() {
         val name = holder.view.findViewById<TextView>(R.id.textViewUserNickname)
         val points = holder.view.findViewById<TextView>(R.id.textViewPoints)
         val position = holder.view.findViewById<TextView>(R.id.textViewPosition)
-        name.setText(RankingDatabase.rankingUser[i])
-        points.setText(RankingDatabase.rankingPoints[i])
+        name.setText(Constant.rankingUser[i])
+        points.setText(Constant.rankingPoints[i])
         if (i<9) {
             position.setText("0" + (i+1))
         } else {
@@ -28,7 +28,7 @@ class RankingAdapter: RecyclerView.Adapter<MyViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return RankingDatabase.rankingUser.size
+        return Constant.rankingUser.size
     }
 }
 
