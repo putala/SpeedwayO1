@@ -9,17 +9,19 @@ import androidx.recyclerview.widget.RecyclerView
 import pl.putala.speedwayo1.R
 
 
-class ContestAdapter(private val exampleList: List<ExampleItem>) : RecyclerView.Adapter<ContestAdapter.ExampleViewHolder>() {
+class ContestAdapter(private val ContestList: List<ContestItem>) : RecyclerView.Adapter<ContestAdapter.ExampleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExampleViewHolder {
-
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_contest, parent, false)
         return  ExampleViewHolder(itemView)
     }
 
+
+
     override fun onBindViewHolder(holder: ExampleViewHolder, position: Int) {
 
-        val currentItem = exampleList[position]
+
+        val currentItem = ContestList[position]
         holder.imageView1.setImageResource(currentItem.imageResource1)
         holder.imageView2.setImageResource(currentItem.imageResource2)
         holder.textView1.text = currentItem.text1
@@ -32,7 +34,9 @@ class ContestAdapter(private val exampleList: List<ExampleItem>) : RecyclerView.
 
 
 
-    override fun getItemCount() = exampleList.size
+    override fun getItemCount() = ContestList.size
+
+
 
 
     class ExampleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

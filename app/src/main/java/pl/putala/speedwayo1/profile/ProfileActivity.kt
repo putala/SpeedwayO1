@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
+import android.widget.SeekBar
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -36,6 +37,25 @@ class ProfileActivity : AppCompatActivity() {
         val spinner = findViewById<Spinner>(R.id.spinnerLanguage)
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, language)
         spinner.adapter = adapter
+
+
+
+        val seek = findViewById<SeekBar>(R.id.seekBarProbny)
+        seek?.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
+                // write custom code for progress is changed
+                findViewById<TextView>(R.id.textViewProbny).text = seek.progress.toString()
+            }
+            override fun onStartTrackingTouch(seek: SeekBar) {
+                // write custom code for progress is started
+                findViewById<TextView>(R.id.textViewProbny).text = seek.progress.toString()
+            }
+            override fun onStopTrackingTouch(seek: SeekBar) {
+                // write custom code for progress is stopped
+                findViewById<TextView>(R.id.textViewProbny).text = seek.progress.toString()
+            }
+        })
 
 
     }

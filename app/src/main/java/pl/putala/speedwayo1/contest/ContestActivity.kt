@@ -22,7 +22,6 @@ class ContestActivity : AppCompatActivity() {
     private val auth = FirebaseAuth.getInstance()
 
 
-
 //    private val contestVm by viewModels<ContestViewModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +34,32 @@ class ContestActivity : AppCompatActivity() {
         findViewById<RecyclerView>(R.id.recyclerViewTypes).adapter = ContestAdapter(exampleList)
         findViewById<RecyclerView>(R.id.recyclerViewTypes).setHasFixedSize(true)
 
+
+
+//
+//
+//        val seek = findViewById<SeekBar>(R.id.seekBarProbny)
+//        seek?.setOnSeekBarChangeListener(object :
+//            SeekBar.OnSeekBarChangeListener {
+//            override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
+//                // write custom code for progress is changed
+//                findViewById<TextView>(R.id.textViewProbny).text = seek.progress.toString()
+//            }
+//            override fun onStartTrackingTouch(seek: SeekBar) {
+//                // write custom code for progress is started
+//                findViewById<TextView>(R.id.textViewProbny).text = seek.progress.toString()
+//            }
+//            override fun onStopTrackingTouch(seek: SeekBar) {
+//                // write custom code for progress is stopped
+//                findViewById<TextView>(R.id.textViewProbny).text = seek.progress.toString()
+//            }
+//        })
+
+
+
+
+
+
     }
 
 
@@ -44,8 +69,9 @@ class ContestActivity : AppCompatActivity() {
         return true
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.action_contest -> {
                 startActivity(Intent(this, ContestActivity::class.java))
             }
@@ -64,25 +90,18 @@ class ContestActivity : AppCompatActivity() {
     }
 
 
+    private fun generateDummyList(size: Int): List<ContestItem> {
 
-    private fun generateDummyList(size: Int): List<ExampleItem> {
-
-        val list = ArrayList<ExampleItem>()
+        val list = ArrayList<ContestItem>()
 
         for (i in 0 until size) {
-            val drawable = when (i % 3) {
-                0 -> R.drawable.team00
-                1 -> R.drawable.ic_baseline_directions_bike_24
-                else -> R.drawable.ic_baseline_moped_24
-            }
-
-            val item = ExampleItem(
+            val item = ContestItem(
                 teamsImage[match[i].substring(0, 2).toInt()],
                 teamsImage[match[i].substring(2, 4).toInt()],
                 "" + teams[match[i].substring(0, 2).toInt()],
                 result[i].substring(0, 2) + " : " + result[i].substring(2, 4),
                 "" + teams[match[i].substring(2, 4).toInt()],
-                "00 : 00",
+                "45 : 45",
                 "01.01.2021"
             )
             list += item
@@ -90,6 +109,71 @@ class ContestActivity : AppCompatActivity() {
 
         return list
     }
+
+
+//
+//
+//    protected fun setingResult(
+//        suwak: SeekBar,
+//        ujscie: TextView
+//    ) {
+//        suwak.setOnSeekBarChangeListener(
+//
+//            ujscie.text = suwak.progress.toString()
+//
+////            object : SeekBar.OnSeekBarChangeListener {
+////
+////
+////
+////                override fun onProgressChanged(
+////                    seekBar: SeekBar?,
+////                    progress: Int,
+////                    fromUser: Boolean
+////                ) {
+////
+////                }
+////
+////                override fun onStartTrackingTouch(seekBar: SeekBar?) {
+////                    //
+////                }
+////
+////                override fun onStopTrackingTouch(seekBar: SeekBar?) {
+////                    //
+////                }
+////
+////            }
+//
+//        )
+
+
+//
+//        suwak.addTextChangedListener(object : TextWatcher {
+//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+//
+//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+//
+//            override fun afterTextChanged(s: Editable?) {
+//                if ( suwak.length() > 0 && confirmPassword.length() > 0 && suwak.isFocused && confirmPassword.text.toString() != suwak.text.toString()) {
+//                    confirmWarn.visibility = TextView.VISIBLE
+//                } else {
+//                    confirmWarn.visibility = TextView.INVISIBLE
+//                }
+//            }
+//        })
+//        confirmPassword.addTextChangedListener(object : TextWatcher {
+//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+//
+//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+//
+//            override fun afterTextChanged(s: Editable?) {
+//                if ( suwak.length() > 0 && confirmPassword.length() > 0 && confirmPassword.isFocused && confirmPassword.text.toString() != suwak.text.toString()) {
+//                    confirmWarn.visibility = TextView.VISIBLE
+//                } else {
+//                    confirmWarn.visibility = TextView.INVISIBLE
+//                }
+//            }
+//        })
+//    }
 
 
 }
