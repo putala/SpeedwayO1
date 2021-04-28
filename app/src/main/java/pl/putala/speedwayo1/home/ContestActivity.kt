@@ -1,4 +1,4 @@
-package pl.putala.speedwayo1.contest
+package pl.putala.speedwayo1.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,14 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import pl.putala.speedwayo1.Constant.match
-import pl.putala.speedwayo1.Constant.result
-import pl.putala.speedwayo1.Constant.teams
-import pl.putala.speedwayo1.Constant.teamsImage
 import pl.putala.speedwayo1.R
-import pl.putala.speedwayo1.ranking.RankingActivity
+import pl.putala.speedwayo1.contest.ContestAdapter
+import pl.putala.speedwayo1.ranking.UsersActivity
 import pl.putala.speedwayo1.login.LoginActivity
-import pl.putala.speedwayo1.profile.ProfileActivity
 
 class ContestActivity : AppCompatActivity() {
 
@@ -49,7 +45,7 @@ class ContestActivity : AppCompatActivity() {
                 startActivity(Intent(this, ContestActivity::class.java))
             }
             R.id.action_ranking -> {
-                startActivity(Intent(this, RankingActivity::class.java))
+                startActivity(Intent(this, UsersActivity::class.java))
             }
             R.id.action_settings -> {
                 startActivity(Intent(this, ProfileActivity::class.java))

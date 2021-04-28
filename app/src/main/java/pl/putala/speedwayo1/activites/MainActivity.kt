@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import pl.putala.speedwayo1.*
-import pl.putala.speedwayo1.contest.ContestActivity
+import pl.putala.speedwayo1.home.ContestActivity
+import pl.putala.speedwayo1.ranking.UsersActivity
 import pl.putala.speedwayo1.login.LoginActivity
-import pl.putala.speedwayo1.ranking.RankingActivity
-import pl.putala.speedwayo1.profile.ProfileActivity
+import pl.putala.speedwayo1.home.ProfileActivity
 
 class MainActivity : BaseActivity() {
 
@@ -20,6 +20,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
 
 //
 //    override fun onStart() {
@@ -42,7 +43,7 @@ class MainActivity : BaseActivity() {
 
 
     fun ranking(view: View) {
-        startActivity(Intent(this, RankingActivity::class.java))
+        startActivity(Intent(this, UsersActivity::class.java))
         Toast.makeText(this, "Ranking.", Toast.LENGTH_SHORT).show()
     }
 

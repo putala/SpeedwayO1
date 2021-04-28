@@ -4,7 +4,7 @@ import java.util.*
 
 data class Admin(
 
-    val id: String? = null,
+    val uid: String? = null,
     val teams: List<String>? = null,
     val date: List<Date>? = null,
     val results: List<String>? = null

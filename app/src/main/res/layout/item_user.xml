@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp">
-
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="6dp">
+
 
         <TextView
             android:id="@+id/textViewPosition"
@@ -18,25 +17,25 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="22dp"
             android:layout_marginStart="5dp"
-            android:text="01"
+            android:text="\?"
             android:textSize="22sp"
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/imageViewPerson"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="30dp"
+            android:id="@+id/imageViewUserImage"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:layout_marginStart="30sp"
             android:src="@drawable/ic_baseline_person_24" />
 
         <TextView
-            android:id="@+id/textViewUserNickname"
+            android:id="@+id/textViewUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="22dp"
-            android:layout_toEndOf="@+id/imageViewPerson"
-            android:text="Marek Kalafior"
+            android:layout_marginStart="5sp"
+            android:layout_marginTop="22sp"
+            android:layout_toEndOf="@+id/imageViewUserImage"
+            android:text="\?"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -47,7 +46,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="5dp"
-            android:text="453"
+            android:text="\?"
             android:textSize="32sp"
             android:textStyle="bold" />
 

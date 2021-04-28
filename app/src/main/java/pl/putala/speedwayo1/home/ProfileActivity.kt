@@ -1,4 +1,4 @@
-package pl.putala.speedwayo1.profile
+package pl.putala.speedwayo1.home
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,19 +6,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.SeekBar
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.google.firebase.auth.FirebaseAuth
 import pl.putala.speedwayo1.R
-import pl.putala.speedwayo1.contest.ContestActivity
 import pl.putala.speedwayo1.data.User
-import pl.putala.speedwayo1.home.HomeActivity
-import pl.putala.speedwayo1.ranking.RankingActivity
+import pl.putala.speedwayo1.ranking.UsersActivity
 import pl.putala.speedwayo1.login.LoginActivity
 
 class ProfileActivity : AppCompatActivity() {
@@ -66,7 +62,7 @@ class ProfileActivity : AppCompatActivity() {
                 startActivity(Intent(this, ContestActivity::class.java))
             }
             R.id.action_ranking -> {
-                startActivity(Intent(this, RankingActivity::class.java))
+                startActivity(Intent(this, UsersActivity::class.java))
             }
             R.id.action_settings -> {
                 startActivity(Intent(this, ProfileActivity::class.java))
@@ -79,10 +75,6 @@ class ProfileActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-
-    fun openHome(view: View) {
-        startActivity(Intent(this, HomeActivity::class.java))
-    }
 
 
 }

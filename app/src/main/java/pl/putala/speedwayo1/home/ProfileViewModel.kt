@@ -1,4 +1,4 @@
-package pl.putala.speedwayo1.profile
+package pl.putala.speedwayo1.home
 
 import androidx.lifecycle.ViewModel
 import pl.putala.speedwayo1.repository.FirebaseRepository

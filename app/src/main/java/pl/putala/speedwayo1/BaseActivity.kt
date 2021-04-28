@@ -6,7 +6,7 @@ import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import pl.putala.speedwayo1.contest.ContestActivity
+import pl.putala.speedwayo1.home.ContestActivity
 
 abstract class BaseActivity : AppCompatActivity() {
 

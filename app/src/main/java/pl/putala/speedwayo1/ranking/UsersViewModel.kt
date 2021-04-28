@@ -1,12 +1,11 @@
-package pl.putala.speedwayo1.home
+package pl.putala.speedwayo1.ranking
 
 import androidx.lifecycle.ViewModel
 import pl.putala.speedwayo1.repository.FirebaseRepository
 
-class HomeViewModel : ViewModel() {
+class UsersViewModel : ViewModel() {
 
     private val repository = FirebaseRepository()
-//    val cars = repository.getHomeVm()
-    val cars = repository.getCars()
+    val users = repository.getUsers()
 
 }
