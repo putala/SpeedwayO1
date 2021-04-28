@@ -52,11 +52,6 @@ class MainActivity : BaseActivity() {
         Toast.makeText(this, "Settings.", Toast.LENGTH_SHORT).show()
     }
 
-    fun brudnopis(view: View) {
-        startActivity(Intent(this, BrudnopisActivity::class.java))
-        Toast.makeText(this, "Brudnopis.", Toast.LENGTH_SHORT).show()
-    }
-
     fun login(view: View) {
         startActivity(Intent(this, LoginActivity::class.java))
         Toast.makeText(this, "Brudnopis.", Toast.LENGTH_SHORT).show()

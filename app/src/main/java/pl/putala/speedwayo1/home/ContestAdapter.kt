@@ -12,7 +12,6 @@ import pl.putala.speedwayo1.Constant.CONTEST
 import pl.putala.speedwayo1.Constant.ConstTeamsImage
 import pl.putala.speedwayo1.Constant.RESULTS
 import pl.putala.speedwayo1.R
-import pl.putala.speedwayo1.data.Admin
 
 
 class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() {
@@ -32,6 +31,7 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
 //    fun setAdmin(ArrayList<String>: cosik) {
 //        mecze = cosik
 //    }
+
 
 
 

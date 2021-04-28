@@ -11,7 +11,6 @@ import com.google.firebase.auth.FirebaseAuth
 import pl.putala.speedwayo1.BaseActivity
 import pl.putala.speedwayo1.R
 import pl.putala.speedwayo1.registration.RegistrationActivity
-import pl.putala.speedwayo1.smieci.MainActivity2
 
 
 class LoginActivity : BaseActivity() {
@@ -105,12 +104,6 @@ class LoginActivity : BaseActivity() {
                     Log.d(LOG_DEBUG, exc.message.toString())
                 }
         }
-    }
-
-
-    fun singIn2(view: View) {
-        startActivity(Intent(this, MainActivity2::class.java))
-        Toast.makeText(this, "Open app.", Toast.LENGTH_SHORT).show()
     }
 
 
