@@ -33,8 +33,8 @@ class ProfileActivity : AppCompatActivity() {
 
         val language = resources.getStringArray(R.array.language)
         val spinner = findViewById<Spinner>(R.id.spinnerLanguage)
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, language)
-        spinner.adapter = adapter
+        val spinerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, language)
+        spinner.adapter = spinerAdapter
 
     }
 

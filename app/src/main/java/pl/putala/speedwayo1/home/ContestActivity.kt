@@ -4,18 +4,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import pl.putala.speedwayo1.R
 import pl.putala.speedwayo1.contest.ContestAdapter
+import pl.putala.speedwayo1.data.Admin
 import pl.putala.speedwayo1.ranking.UsersActivity
 import pl.putala.speedwayo1.login.LoginActivity
 
 class ContestActivity : AppCompatActivity() {
 
     private val auth = FirebaseAuth.getInstance()
+    private val adminVm by viewModels<AdminViewModel>()
+
 
 //    private val contestVm by viewModels<ContestViewModel>
 
@@ -26,7 +30,6 @@ class ContestActivity : AppCompatActivity() {
 
         findViewById<RecyclerView>(R.id.recyclerViewTypes).layoutManager = LinearLayoutManager(this)
         findViewById<RecyclerView>(R.id.recyclerViewTypes).adapter = ContestAdapter()
-//        findViewById<RecyclerView>(R.id.recyclerViewTypes).setHasFixedSize(true)
 
 
     }

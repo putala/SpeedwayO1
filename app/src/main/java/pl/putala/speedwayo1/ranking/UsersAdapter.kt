@@ -11,7 +11,7 @@ import pl.putala.speedwayo1.data.User
 
 
 
-class UsersAdapter(private val listener: UsersActivity): RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
+class UsersAdapter: RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
 
     private val usersList = ArrayList<User>()
 
@@ -45,30 +45,12 @@ class UsersAdapter(private val listener: UsersActivity): RecyclerView.Adapter<Us
 
         name.text = usersList[holder.absoluteAdapterPosition].name
         points.text = usersList[holder.absoluteAdapterPosition].sumOfPoints
-
-
         // carImage   -> potem :-)
 
     }
 
     override fun getItemCount() = usersList.size
 
-
-    inner class UsersViewHolder(val view: View) : RecyclerView.ViewHolder(view){
-        init {
-            view.setOnLongClickListener {
-                listener.onUserLongClick(usersList[absoluteAdapterPosition], absoluteAdapterPosition)
-                true
-            }
-        }
-    }
+    inner class UsersViewHolder(val view: View) : RecyclerView.ViewHolder(view){}
 }
-
-
-
-interface OnUserItemLongClick{
-    fun onCarLongClick(user: User, position: Int)
-}
-
-
 

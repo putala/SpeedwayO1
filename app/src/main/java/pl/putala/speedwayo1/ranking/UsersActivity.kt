@@ -20,7 +20,7 @@ import pl.putala.speedwayo1.home.ProfileActivity
 class UsersActivity : AppCompatActivity() {
 
     private val homeVm by viewModels<UsersViewModel>()
-    private val adapter = UsersAdapter(this)
+    private val adapter = UsersAdapter()
     private val auth = FirebaseAuth.getInstance()
 
 
@@ -31,17 +31,10 @@ class UsersActivity : AppCompatActivity() {
         findViewById<RecyclerView>(R.id.recyclerViewUsers).layoutManager = LinearLayoutManager(this)
         findViewById<RecyclerView>(R.id.recyclerViewUsers).adapter = adapter
 
-
         homeVm.users.observe(this, Observer { list ->
             adapter.setUsers(list)
         })
     }
-
-
-    fun onUserLongClick(user: User, position: Int) {
-        Toast.makeText(this, user.name, Toast.LENGTH_SHORT).show()
-    }
-
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
