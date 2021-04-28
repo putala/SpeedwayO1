@@ -8,10 +8,9 @@ data class User(
     val email: String? = null,
     val image: String? = null,
     val sumOfPoints: String? = null,
+    val date: List<Date>? = null,
+    val typedResults: List<String>? = null
 
-//
-//    val date: List<Date>? = null,
-//    val types: List<String>? = null
 )
 
 

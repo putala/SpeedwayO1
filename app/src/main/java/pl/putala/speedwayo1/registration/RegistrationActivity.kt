@@ -72,9 +72,8 @@ class RegistrationActivity : BaseActivity() {
                     .addOnFailureListener {exc ->
                         Toast.makeText(this, "Upsss... Coś poszło nie tak!", Toast.LENGTH_SHORT).show()
                         Log.d(REG_DEBUG, exc.message.toString())
+                        startActivity(Intent(this, LoginActivity::class.java))
                     }
-
-                startActivity(Intent(this, LoginActivity::class.java))
             }
 
         } else {

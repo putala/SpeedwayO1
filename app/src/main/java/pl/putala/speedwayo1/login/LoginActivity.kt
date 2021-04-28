@@ -33,7 +33,6 @@ class LoginActivity : BaseActivity() {
     }
 
 
-
     override fun onStart() {
         super.onStart()
         isCurrentUser()
@@ -43,7 +42,6 @@ class LoginActivity : BaseActivity() {
     private fun isCurrentUser() {
         fbAuth.currentUser?.let { startApp() }
     }
-
 
 
     override fun onResume() {
@@ -89,11 +87,11 @@ class LoginActivity : BaseActivity() {
                 .addOnSuccessListener { authRes ->
                     if (authRes.user != null) {
                         startApp()
-                        Toast.makeText(this, "Zalogowany !!!!!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "You are logged id!!!", Toast.LENGTH_SHORT).show()
                     }
                 }
                 .addOnFailureListener { exc ->
-                    Toast.makeText(this, "Upsss... Coś poszło nie tak!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Ops... something went wrong!", Toast.LENGTH_SHORT).show()
                     Log.d(LOG_DEBUG, exc.message.toString())
                 }
         }
