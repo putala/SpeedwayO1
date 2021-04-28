@@ -18,7 +18,7 @@ abstract class BaseActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
-                if (text.isFocused && text.length() > 0 && text.length() < 5
+                if (text.isFocused && text.length() > 0 && text.length() < 6
                 ) {
                     textWarn.visibility = TextView.VISIBLE
                 } else {

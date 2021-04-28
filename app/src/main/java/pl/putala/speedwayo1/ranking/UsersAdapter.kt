@@ -10,7 +10,6 @@ import pl.putala.speedwayo1.R
 import pl.putala.speedwayo1.data.User
 
 
-
 class UsersAdapter: RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
 
     private val usersList = ArrayList<User>()

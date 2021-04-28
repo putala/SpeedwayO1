@@ -7,5 +7,4 @@ class UsersViewModel : ViewModel() {
 
     private val repository = FirebaseRepository()
     val users = repository.getUsers()
-
 }

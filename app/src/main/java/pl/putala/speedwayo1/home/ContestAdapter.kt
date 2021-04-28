@@ -7,18 +7,40 @@ import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import pl.putala.speedwayo1.Constant.match
-import pl.putala.speedwayo1.Constant.result
-import pl.putala.speedwayo1.Constant.teams
-import pl.putala.speedwayo1.Constant.teamsImage
+import pl.putala.speedwayo1.Constant.ConstMatch
+import pl.putala.speedwayo1.Constant.ConstResult
+import pl.putala.speedwayo1.Constant.ConstTeams
+import pl.putala.speedwayo1.Constant.CONTEST
+import pl.putala.speedwayo1.Constant.ConstTeamsImage
+import pl.putala.speedwayo1.Constant.RESULTS
 import pl.putala.speedwayo1.R
+import pl.putala.speedwayo1.data.Admin
 
 
-class ContestAdapter: RecyclerView.Adapter<ContestViewHolder>() {
+class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() {
+
+
+
+//
+//    var mecze: ArrayList<String>? = null
+//
+//    fun setAdmin(admin: Admin) {
+//        mecze = admin.teams
+//    }
+
+//
+//    var mecze: ArrayList<String>? = null
+//
+//    fun setAdmin(ArrayList<String>: cosik) {
+//        mecze = cosik
+//    }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContestViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_contest, parent, false)
-        return  ContestViewHolder(itemView)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_contest, parent, false)
+        return ContestViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ContestViewHolder, i: Int) {
@@ -31,11 +53,18 @@ class ContestAdapter: RecyclerView.Adapter<ContestViewHolder>() {
         val textViewTypeResult = holder.view.findViewById<TextView>(R.id.textViewTypeResult)
         val textViewDate = holder.view.findViewById<TextView>(R.id.textViewDate)
 
-        imageViewFirstTeam.setImageResource(teamsImage[match[i].substring(0, 2).toInt()])
-        imageViewSecondTeam.setImageResource(teamsImage[match[i].substring(2, 4).toInt()])
-        textViewFirstTeam.text = ("" + teams[match[i].substring(0, 2).toInt()])
-        textViewResult.text = (result[i].substring(0, 2) + " : " + result[i].substring(2, 4))
-        textViewSecondTeam.text = ("" + teams[match[i].substring(2, 4).toInt()])
+        imageViewFirstTeam.setImageResource(ConstTeamsImage[CONTEST.substring(4*i, 4*i+2).toInt()]) //ConstMatch[i].substring(0, 2).toInt()])
+        imageViewSecondTeam.setImageResource(ConstTeamsImage[CONTEST.substring(4*i+2, 4*i+4).toInt()])
+        textViewFirstTeam.text = ("" + ConstTeams[CONTEST.substring(4*i, 4*i+2).toInt()])
+        textViewResult.text = (RESULTS.substring(4*i, 4*i+2) + " : " + RESULTS.substring(4*i+2, 4*i+4))
+        textViewSecondTeam.text = ("" + ConstTeams[CONTEST.substring(4*i+2, 4*i+4).toInt()])
+
+//
+//        imageViewFirstTeam.setImageResource(ConstTeamsImage[  ConstMatch[i].substring(0, 2).toInt()])
+//        imageViewSecondTeam.setImageResource(ConstTeamsImage[ConstMatch[i].substring(2, 4).toInt()])
+//        textViewFirstTeam.text = ("" + ConstTeams[ConstMatch[i].substring(0, 2).toInt()])
+//        textViewResult.text = (ConstResult[i].substring(0, 2) + " : " + ConstResult[i].substring(2, 4))
+//        textViewSecondTeam.text = ("" + ConstTeams[ConstMatch[i].substring(2, 4).toInt()])
 
         val seek = holder.view.findViewById<SeekBar>(R.id.seekBarTyping)
         seek?.setOnSeekBarChangeListener(object :
@@ -45,22 +74,25 @@ class ContestAdapter: RecyclerView.Adapter<ContestViewHolder>() {
                 textViewTypeResult.text = ((20 + (seek.progress / 2)).toString()
                         + " : " + (70 - (seek.progress / 2)).toString())
             }
+
             override fun onStartTrackingTouch(seek: SeekBar) {
                 // write custom code for progress is started
 //                textViewTypeResult.text = seek.progress.toString()
             }
+
             override fun onStopTrackingTouch(seek: SeekBar) {
                 // write custom code for progress is stopped
 //                textViewTypeResult.text = seek.progress.toString()
             }
         })
-
     }
 
+    override fun getItemCount() = (CONTEST.length/4) // ConstMatch.size
 
-    override fun getItemCount() = match.size
 
+
+    inner class ContestViewHolder(val view: View) : RecyclerView.ViewHolder(view)
 }
 
 
-class ContestViewHolder(val view: View): RecyclerView.ViewHolder(view)
+

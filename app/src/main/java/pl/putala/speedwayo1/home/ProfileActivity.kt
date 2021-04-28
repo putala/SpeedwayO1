@@ -20,24 +20,21 @@ import pl.putala.speedwayo1.login.LoginActivity
 class ProfileActivity : AppCompatActivity() {
 
     private val profileVm by viewModels<ProfileViewModel>()
-    //    private lateinit var viewModel: ProfileViewModel
-
     private val PROFILE_DEBUG = "PROFILE_DEBUG"
     private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_profile)
-        profileVm.user.observe(this, Observer { user -> bindUserData(user) })
 
         val language = resources.getStringArray(R.array.language)
         val spinner = findViewById<Spinner>(R.id.spinnerLanguage)
         val spinerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, language)
         spinner.adapter = spinerAdapter
 
-    }
+        profileVm.user.observe(this, Observer { user -> bindUserData(user) })
 
+    }
 
 
     private fun bindUserData(user: User) {

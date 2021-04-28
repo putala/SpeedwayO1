@@ -1,12 +1,13 @@
 package pl.putala.speedwayo1.data
 
 import java.util.*
+import kotlin.collections.ArrayList
 
 data class Admin(
 
     val uid: String? = null,
-    val teams: List<String>? = null,
-    val date: List<Date>? = null,
-    val results: List<String>? = null
+    val teams: String? = null,
+    val results: String? = null,
+    val date: ArrayList<Date>? = null
 
 )

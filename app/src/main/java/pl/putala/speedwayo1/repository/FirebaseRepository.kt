@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import pl.putala.speedwayo1.data.Admin
@@ -32,6 +33,19 @@ class FirebaseRepository {
             }
         return cloudResult
     }
+
+//
+//    fun addUser(user: User) {
+//        cloud.collection("users")
+//            .document(auth.currentUser?.uid!!)
+//            .update("name", FieldValue.arrayUnion(user.uid))
+//            .addOnSuccessListener {
+//                Log.d(REPO_DEBUG, "Dodano imie użytkownika")
+//            }
+//            .addOnFailureListener {
+//                Log.d(REPO_DEBUG, it.message.toString())
+//            }
+//    }
 
 
     fun getUsers(): LiveData<List<User>>{
@@ -64,6 +78,13 @@ class FirebaseRepository {
             }
         return cloudResult
     }
+
+    fun createNewUser(user: User) {
+        cloud.collection("users")
+            .document(user.uid!!)
+            .set(user)
+    }
+
 
 
 }

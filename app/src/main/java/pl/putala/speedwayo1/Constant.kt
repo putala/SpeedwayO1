@@ -4,7 +4,7 @@ object Constant {
 
 
 
-    var teams:ArrayList<String> = arrayListOf(
+    var ConstTeams:ArrayList<String> = arrayListOf(
         "Unia Leszno",
         "Stal Gorzów",
         "Sparta Wrocław",
@@ -13,7 +13,6 @@ object Constant {
         "Motor Lublin",
         "GKM Grudziądz",
         "Apator Toruń",
-
         "PGG ROW Rybnik",
         "Start Gniezno",
         "Orzeł Łódź",
@@ -25,7 +24,7 @@ object Constant {
     )
 
 
-    var teamsImage:ArrayList<Int> = arrayListOf(
+    var ConstTeamsImage:ArrayList<Int> = arrayListOf(
         R.drawable.team00,
         R.drawable.team01,
         R.drawable.team02,
@@ -46,7 +45,7 @@ object Constant {
     )
 
 
-    var match:ArrayList<String> = arrayListOf(
+    var ConstMatch:ArrayList<String> = arrayListOf(
         "0001",
         "0203",
         "0405",
@@ -57,7 +56,10 @@ object Constant {
         "1415"
     )
 
-    var result:ArrayList<String> = arrayListOf(
+    var CONTEST = "00010203040506070809101112131415"
+    var RESULTS = "41494045444655355040603045454446"
+
+    var ConstResult:ArrayList<String> = arrayListOf(
         "4446",
         "4545",
         "6030",

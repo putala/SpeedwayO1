@@ -8,16 +8,22 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import com.google.firebase.auth.FirebaseAuth
 import pl.putala.speedwayo1.BaseActivity
 import pl.putala.speedwayo1.login.LoginActivity
 import pl.putala.speedwayo1.R
+import pl.putala.speedwayo1.data.User
+import pl.putala.speedwayo1.ranking.UsersViewModel
+import java.util.*
 
 
 class RegistrationActivity : BaseActivity() {
 
     private val REG_DEBUG = "REG_DEBUG"
     private val fbAuth = FirebaseAuth.getInstance()
+    private val regVm by viewModels<RegistrationViewModel>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +46,10 @@ class RegistrationActivity : BaseActivity() {
             findViewById(R.id.editTextConfirmPasswordSave),
             findViewById(R.id.textViewConfirmPasswordSave)
         )
+
     }
+
+
 
 
     fun save(view: View) {
@@ -66,11 +75,23 @@ class RegistrationActivity : BaseActivity() {
                 fbAuth.createUserWithEmailAndPassword(emailSave, passSave)
                     .addOnSuccessListener {authRes ->
                         if(authRes.user != null) {
+
+                            val user = pl.putala.speedwayo1.data.User(
+                                authRes.user!!.uid,
+                                nicknameSave,
+                                emailSave,
+                                "",
+                                "0",
+                                "",
+                                ArrayList<Date> ())
+
+                            regVm.createNewUser(user)
                             startApp()
+
                         }
                     }
                     .addOnFailureListener {exc ->
-                        Toast.makeText(this, "Upsss... Coś poszło nie tak!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Ops... something went wrong!", Toast.LENGTH_SHORT).show()
                         Log.d(REG_DEBUG, exc.message.toString())
                         startActivity(Intent(this, LoginActivity::class.java))
                     }

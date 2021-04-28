@@ -29,9 +29,19 @@ class LoginActivity : BaseActivity() {
 
         validationEmail(findViewById(R.id.editTextEmail), findViewById(R.id.textViewEmail))
         validationText(findViewById(R.id.editTextPassword), findViewById(R.id.textViewPassword))
+//
+//        userVm.user.observe(this, Observer { user -> bindUserData(user) })
 
     }
 
+//
+//    private fun bindUserData(user: User) {
+//        Log.d(USER_DEBUG, user.toString())
+//        findViewById<TextView>(R.id.textViewNameS).text = user.name
+//        findViewById<TextView>(R.id.textViewEmailS).text = user.email
+//        findViewById<TextView>(R.id.textViewPointsSumS).text = user.sumOfPoints
+//
+//    }
 
     override fun onStart() {
         super.onStart()
