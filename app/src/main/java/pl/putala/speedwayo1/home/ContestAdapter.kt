@@ -7,8 +7,6 @@ import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import pl.putala.speedwayo1.Constant.ConstMatch
-import pl.putala.speedwayo1.Constant.ConstResult
 import pl.putala.speedwayo1.Constant.ConstTeams
 import pl.putala.speedwayo1.Constant.CONTEST
 import pl.putala.speedwayo1.Constant.ConstTeamsImage

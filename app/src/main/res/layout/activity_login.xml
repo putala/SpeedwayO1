@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.LoginActivity">
+    tools:context=".login.LoginActivity"
+    android:background="@color/fui_linkColor">
 
 
     <EditText
@@ -94,16 +95,6 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
 
-    <Button
-        android:id="@+id/buttonSingIn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="singIn2"
-        android:text="Sing In B"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSingIn" />
 
 
 

@@ -7,6 +7,7 @@
     tools:context=".home.ContestActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:background="@color/common_google_signin_btn_text_dark_focused"
         android:id="@+id/recyclerViewTypes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
