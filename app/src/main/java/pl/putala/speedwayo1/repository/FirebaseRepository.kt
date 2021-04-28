@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import pl.putala.speedwayo1.data.Car
 import pl.putala.speedwayo1.data.User
 
 class FirebaseRepository {
@@ -28,9 +29,26 @@ class FirebaseRepository {
             .addOnFailureListener {
                 Log.d(REPO_DEBUG, it.message.toString())
             }
-
         return cloudResult
-
     }
+
+
+    fun getCars(): LiveData<List<Car>>{
+        val cloudResult = MutableLiveData<List<Car>>()
+        cloud.collection("cars")
+            .get()
+            .addOnSuccessListener {
+                val user = it.toObjects(Car::class.java)
+                cloudResult.postValue(user)
+            }
+            .addOnFailureListener {
+                Log.d(REPO_DEBUG, it.message.toString())
+            }
+        return cloudResult
+    }
+
+
+
+
 
 }

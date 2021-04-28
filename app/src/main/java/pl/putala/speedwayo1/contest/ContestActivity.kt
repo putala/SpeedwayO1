@@ -33,7 +33,6 @@ class ContestActivity : AppCompatActivity() {
 //        findViewById<RecyclerView>(R.id.recyclerViewTypes).setHasFixedSize(true)
 
 
-
     }
 
 

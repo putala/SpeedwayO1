@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import android.widget.Spinner
@@ -16,11 +17,11 @@ import com.google.firebase.auth.FirebaseAuth
 import pl.putala.speedwayo1.R
 import pl.putala.speedwayo1.contest.ContestActivity
 import pl.putala.speedwayo1.data.User
+import pl.putala.speedwayo1.home.HomeActivity
 import pl.putala.speedwayo1.ranking.RankingActivity
 import pl.putala.speedwayo1.login.LoginActivity
 
 class ProfileActivity : AppCompatActivity() {
-
 
     private val profileVm by viewModels<ProfileViewModel>()
     //    private lateinit var viewModel: ProfileViewModel
@@ -30,6 +31,7 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_profile)
         profileVm.user.observe(this, Observer { user -> bindUserData(user) })
 
@@ -75,6 +77,11 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+
+    fun openHome(view: View) {
+        startActivity(Intent(this, HomeActivity::class.java))
     }
 
 
