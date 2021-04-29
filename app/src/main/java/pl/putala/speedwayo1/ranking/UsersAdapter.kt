@@ -17,6 +17,8 @@ class UsersAdapter: RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
     fun setUsers(list: List<User>){
         usersList.clear()
         usersList.addAll(list)
+        usersList.sortWith(compareBy{it.sumOfPoints})
+        usersList.reverse()
         notifyDataSetChanged()
     }
 

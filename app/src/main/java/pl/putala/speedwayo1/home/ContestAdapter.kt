@@ -83,12 +83,20 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
 
         if ((results.substring(4 * i, 4 * i + 2)) != "00" ||  (results.substring(4 * i + 2, 4 * i + 4)) != "00"){
             seek.visibility = SeekBar.INVISIBLE
-            if (((results.substring(4*i, 4*i+2).toInt()) - (results.substring(4*i+2, 4*i+4).toInt()) == 0)
-                && (typA - typB == 0)){
-                sumOfPoints += 50
-            } else if (((results.substring(4*i, 4*i+2).toInt())-(results.substring(4*i+2, 4*i+4).toInt()))*(typA-typB)>0) {
-                sumOfPoints += abs(((results.substring(4 * i, 4 * i + 2).toInt()) - (results.substring(4 * i + 2, 4 * i + 4).toInt())) + (typA - typB))
+            if (typA != 0){
+                if (((results.substring(4*i, 4*i+2).toInt()) - (results.substring(4*i+2, 4*i+4).toInt()) == 0)
+                    && (typA - typB == 0)){
+                    sumOfPoints += 70
+                } else if (((results.substring(4*i, 4*i+2).toInt())-(results.substring(4*i+2, 4*i+4).toInt()))*(typA-typB)>0) {
+                    sumOfPoints += abs(((results.substring(4 * i, 4 * i + 2).toInt()) - (results.substring(4 * i + 2, 4 * i + 4).toInt())) + (typA - typB))
+                    if (results.substring(4*i, 4*i+2).toInt() == typA){
+                        sumOfPoints += 20
+                    }
+                }
+
             }
+        } else {
+            seek.visibility = SeekBar.VISIBLE
         }
 
         seek?.setOnSeekBarChangeListener(object :

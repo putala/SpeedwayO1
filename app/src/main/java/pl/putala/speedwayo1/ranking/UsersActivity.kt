@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.auth.FirebaseAuth
 import pl.putala.speedwayo1.R
 import pl.putala.speedwayo1.home.ContestActivity
@@ -32,6 +33,19 @@ class UsersActivity : AppCompatActivity() {
         usersVm.users.observe(this, Observer { list ->
             adapter.setUsers(list)
         })
+
+
+
+        refreshApp()
+
+    }
+
+
+    private fun refreshApp(){
+        findViewById<SwipeRefreshLayout>(R.id.refreshLayoutUsers).setOnRefreshListener {
+            startActivity(Intent(this, UsersActivity::class.java))
+            findViewById<SwipeRefreshLayout>(R.id.refreshLayoutUsers).isRefreshing = false
+        }
     }
 
 

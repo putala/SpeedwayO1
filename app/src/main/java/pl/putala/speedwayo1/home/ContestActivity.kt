@@ -5,17 +5,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.auth.FirebaseAuth
 import pl.putala.speedwayo1.R
 import pl.putala.speedwayo1.contest.ContestAdapter
-import pl.putala.speedwayo1.ranking.UsersActivity
 import pl.putala.speedwayo1.login.LoginActivity
+import pl.putala.speedwayo1.ranking.UsersActivity
 import java.util.*
 
 class ContestActivity : AppCompatActivity() {
@@ -34,6 +33,7 @@ class ContestActivity : AppCompatActivity() {
 
         Log.d(TAG_CON, "MainActivity -> onCreate")
 
+
         findViewById<RecyclerView>(R.id.recyclerViewTypes).layoutManager = LinearLayoutManager(this)
         findViewById<RecyclerView>(R.id.recyclerViewTypes).adapter = adapter
 
@@ -43,11 +43,24 @@ class ContestActivity : AppCompatActivity() {
 //            adapter.editUser(userVm)
         })
 
-        adminVm.admin.observe(this, {admin ->
+        adminVm.admin.observe(this, { admin ->
             Log.d(PROFILE_DEBUG, admin.toString())
             adapter.setAdmin(admin)
         })
 
+        refreshApp()
+
+    }
+
+
+
+    private fun refreshApp(){
+
+        findViewById<SwipeRefreshLayout>(R.id.refreshLayoutContest).setOnRefreshListener {
+            adapter.editUser(userVm)
+            startActivity(Intent(this, ContestActivity::class.java))
+            findViewById<SwipeRefreshLayout>(R.id.refreshLayoutContest).isRefreshing = false
+        }
     }
 
 
