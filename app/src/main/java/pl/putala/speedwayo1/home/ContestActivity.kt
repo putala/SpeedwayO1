@@ -49,15 +49,14 @@ class ContestActivity : AppCompatActivity() {
         })
 
         refreshApp()
-
     }
 
 
 
     private fun refreshApp(){
-
         findViewById<SwipeRefreshLayout>(R.id.refreshLayoutContest).setOnRefreshListener {
             adapter.editUser(userVm)
+            Thread.sleep(200)
             startActivity(Intent(this, ContestActivity::class.java))
             findViewById<SwipeRefreshLayout>(R.id.refreshLayoutContest).isRefreshing = false
         }
@@ -110,18 +109,22 @@ class ContestActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_contest -> {
                 adapter.editUser(userVm)
+                Thread.sleep(200)
                 startActivity(Intent(this, ContestActivity::class.java))
             }
             R.id.action_ranking -> {
                 adapter.editUser(userVm)
+                Thread.sleep(200)
                 startActivity(Intent(this, UsersActivity::class.java))
             }
             R.id.action_settings -> {
                 adapter.editUser(userVm)
+                Thread.sleep(200)
                 startActivity(Intent(this, ProfileActivity::class.java))
             }
             R.id.action_logout -> {
                 adapter.editUser(userVm)
+                Thread.sleep(200)
                 fbAuth.signOut()
                 startActivity(Intent(this, LoginActivity::class.java))
             }

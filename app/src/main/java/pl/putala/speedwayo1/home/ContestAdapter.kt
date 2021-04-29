@@ -27,13 +27,18 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
     private val PROFILE_DEBUG_P = "PROFILE_DEBUG_P"
     private var typedResults = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
     private var sumOfPoints = 0
+    private var nSumOfPoints = ""
     private var typA = 0
     private var typB = 0
+    private var visibilityBar = SeekBar.INVISIBLE
 
     fun setAdmin(admin: Admin?) {
         if (admin != null) {
             contest = admin.teams.toString()
             results = admin.results.toString()
+            if (admin.visibilityBar.toString() == "VISIBLE") {
+                visibilityBar = SeekBar.VISIBLE
+            }
 //            Log.d(PROFILE_DEBUG, contest)
             notifyDataSetChanged()
         }
@@ -82,13 +87,13 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
 
 
         if ((results.substring(4 * i, 4 * i + 2)) != "00" ||  (results.substring(4 * i + 2, 4 * i + 4)) != "00"){
-            seek.visibility = SeekBar.INVISIBLE
+            seek.visibility = visibilityBar
             if (typA != 0){
                 if (((results.substring(4*i, 4*i+2).toInt()) - (results.substring(4*i+2, 4*i+4).toInt()) == 0)
                     && (typA - typB == 0)){
                     sumOfPoints += 70
                 } else if (((results.substring(4*i, 4*i+2).toInt())-(results.substring(4*i+2, 4*i+4).toInt()))*(typA-typB)>0) {
-                    sumOfPoints += abs(((results.substring(4 * i, 4 * i + 2).toInt()) - (results.substring(4 * i + 2, 4 * i + 4).toInt())) + (typA - typB))
+                    sumOfPoints += 50 - abs(((results.substring(4 * i, 4 * i + 2).toInt()) - (results.substring(4 * i + 2, 4 * i + 4).toInt())) - (typA - typB))
                     if (results.substring(4*i, 4*i+2).toInt() == typA){
                         sumOfPoints += 20
                     }
@@ -98,6 +103,7 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
         } else {
             seek.visibility = SeekBar.VISIBLE
         }
+
 
         seek?.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
@@ -128,8 +134,18 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
 
     override fun getItemCount() = (contest.length / 4) // ConstMatch.size
 
+
+
     fun editUser(userVm: ProfileViewModel) {
-        val map = mapOf("typedResults" to typedResults, "sumOfPoints" to sumOfPoints.toString())
+        if(sumOfPoints<10){
+            nSumOfPoints = "000$sumOfPoints"
+        } else if (sumOfPoints<100) {
+            nSumOfPoints = "00$sumOfPoints"
+        } else {
+            nSumOfPoints = "0$sumOfPoints"
+        }
+
+        val map = mapOf("typedResults" to typedResults, "sumOfPoints" to nSumOfPoints)
         userVm.editProfileData(map)
     }
 
