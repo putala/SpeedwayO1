@@ -34,8 +34,6 @@ class UsersActivity : AppCompatActivity() {
             adapter.setUsers(list)
         })
 
-
-
         refreshApp()
 
     }

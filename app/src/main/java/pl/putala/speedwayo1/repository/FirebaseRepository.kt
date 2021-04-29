@@ -3,13 +3,13 @@ package pl.putala.speedwayo1.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.google.common.collect.Maps
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import pl.putala.speedwayo1.data.Admin
 import pl.putala.speedwayo1.data.User
+import java.net.URL
 
 class FirebaseRepository {
 
@@ -88,6 +88,45 @@ class FirebaseRepository {
     }
 
 
+    fun uploadUserPhoto(bytes: ByteArray){
+        storage.getReference("users")
+            .child("$(auth.currentUser!!.uid).jpg")
+            .putBytes(bytes)
+            .addOnCompleteListener{
+                Log.d(REPO_DEBUG, "Complete upload photo!")
+            }
+            .addOnSuccessListener{
+                getPhotoDownloadUrl(it.storage)
+            }
+            .addOnFailureListener{
+                Log.d(REPO_DEBUG, it.message.toString())
+            }
+    }
+
+    private fun getPhotoDownloadUrl(storage: StorageReference) {
+        storage.downloadUrl
+            .addOnSuccessListener {
+                updateUserPhoto(it.toString())
+            }
+            .addOnFailureListener {
+                Log.d(REPO_DEBUG, it.message.toString())
+            }
+    }
+
+    private fun updateUserPhoto(it: String?) {
+        cloud.collection("users")
+            .document("$(auth.currentUser!!.uid).jpg")
+            .update("image", "url")
+            .addOnSuccessListener {
+                Log.d(REPO_DEBUG, "Update user photo!")
+            }
+            .addOnFailureListener {
+//                Log.d(REPO_DEBUG, it.message.toString())
+            }
+
+    }
+
+
 //
 //    fun addUser(user: User) {
 //        cloud.collection("users")
@@ -103,3 +142,4 @@ class FirebaseRepository {
 
 
 }
+

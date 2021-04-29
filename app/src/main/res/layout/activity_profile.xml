@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.ProfileActivity"
-    android:background="@color/fui_linkColor">
+    android:background="@color/fui_linkColor"
+    tools:context=".home.ProfileActivity">
 
 
     <ImageView
@@ -13,6 +13,7 @@
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="422dp"
         android:src="@drawable/ic_baseline_face_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,26 +46,26 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewNameS" />
 
 
-<!--    <TextView-->
-<!--        android:id="@+id/textViewLanguage"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:text="@string/language"-->
-<!--        android:textSize="18sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textViewEmailS" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/textViewLanguage"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        android:text="@string/language"-->
+    <!--        android:textSize="18sp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/textViewEmailS" />-->
 
-<!--    <Spinner-->
-<!--        android:id="@+id/spinnerLanguage"-->
-<!--        android:layout_width="190dp"-->
-<!--        android:layout_height="25dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textViewLanguage" />-->
+    <!--    <Spinner-->
+    <!--        android:id="@+id/spinnerLanguage"-->
+    <!--        android:layout_width="190dp"-->
+    <!--        android:layout_height="25dp"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/textViewLanguage" />-->
 
     <TextView
         android:id="@+id/textViewPointsS"
@@ -91,25 +92,18 @@
 
 
 
-    <!--    <Button-->
-<!--        android:id="@+id/buttonSaveSettings"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginEnd="48dp"-->
-<!--        android:layout_marginBottom="48dp"-->
-<!--        android:text="@string/save"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent" />-->
-
 <!--    <Button-->
-<!--        android:id="@+id/buttonCancelSettings"-->
+<!--        android:id="@+id/buttonPhoto"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="48dp"-->
-<!--        android:layout_marginBottom="48dp"-->
-<!--        android:text="@string/cancel"-->
+<!--        android:text="Photo"-->
+<!--        android:onClick="createPhoto"-->
+<!--        android:layout_marginBottom="30dp"-->
 <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.91" />-->
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

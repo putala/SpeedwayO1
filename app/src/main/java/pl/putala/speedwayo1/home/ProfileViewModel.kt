@@ -12,4 +12,8 @@ class ProfileViewModel : ViewModel() {
         repository.editProfileData(map)
     }
 
+    fun uploadUserPhoto(bytes: ByteArray){
+        repository.uploadUserPhoto(bytes)
+    }
+
 }
