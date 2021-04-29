@@ -16,6 +16,7 @@ import pl.putala.speedwayo1.data.User
 import pl.putala.speedwayo1.home.ContestActivity
 import pl.putala.speedwayo1.home.ProfileViewModel
 import java.util.*
+import kotlin.math.abs
 
 
 class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() {
@@ -25,7 +26,7 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
     private val PROFILE_DEBUG = "PROFILE_DEBUG"
     private val PROFILE_DEBUG_P = "PROFILE_DEBUG_P"
     private var typedResults = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-    private var sumPoints = "0"
+    private var sumOfPoints = 0
     private var typA = 0
     private var typB = 0
 
@@ -41,7 +42,7 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
     fun getUser(user: User?) {
         if (user != null) {
             typedResults = user.typedResults.toString()
-            sumPoints = user.sumOfPoints.toString()
+//            sumOfPoints = user.sumOfPoints.toString()
             Log.d(PROFILE_DEBUG, typedResults)
             notifyDataSetChanged()
         }
@@ -67,31 +68,31 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
 
 
 
-        imageViewFirstTeam.setImageResource(
-            ConstTeamsImage[contest.substring(4 * i, 4 * i + 2).toInt()]
-        )
-        imageViewSecondTeam.setImageResource(
-            ConstTeamsImage[contest.substring(4 * i + 2, 4 * i + 4).toInt()]
-        )
-        textViewFirstTeam.text =
-            ("" + ConstTeams[contest.substring(4 * i, 4 * i + 2).toInt()])
-        textViewResult.text =
-            (results.substring(4 * i, 4 * i + 2) + " : " + results.substring(4 * i + 2, 4 * i + 4))
+        imageViewFirstTeam.setImageResource(ConstTeamsImage[contest.substring(4 * i, 4 * i + 2).toInt()])
+        imageViewSecondTeam.setImageResource(ConstTeamsImage[contest.substring(4 * i + 2, 4 * i + 4).toInt()])
+        textViewFirstTeam.text = ("" + ConstTeams[contest.substring(4 * i, 4 * i + 2).toInt()])
+        textViewResult.text = (results.substring(4 * i, 4 * i + 2) + " : " + results.substring(4 * i + 2, 4 * i + 4))
         textViewSecondTeam.text = ("" + ConstTeams[contest.substring(4 * i + 2, 4 * i + 4).toInt()])
-        textViewTypeResult.text =
-            (typedResults.substring(4 * i, 4 * i + 2) + " : " + typedResults.substring(
-                4 * i + 2,
-                4 * i + 4
-            ))
+        textViewTypeResult.text = (typedResults.substring(4 * i, 4 * i + 2) + " : " + typedResults.substring(4 * i + 2, 4 * i + 4))
         typA = typedResults.substring(4 * i, 4 * i + 2).toInt()
         typB = typedResults.substring(4 * i + 2, 4 * i + 4).toInt()
 
         val seek = holder.view.findViewById<SeekBar>(R.id.seekBarTyping)
         seek.progress = 2 * (typA - 20)
+
+
+        if ((results.substring(4 * i, 4 * i + 2)) != "00" ||  (results.substring(4 * i + 2, 4 * i + 4)) != "00"){
+            seek.visibility = SeekBar.INVISIBLE
+            if (((results.substring(4*i, 4*i+2).toInt()) - (results.substring(4*i+2, 4*i+4).toInt()) == 0)
+                && (typA - typB == 0)){
+                sumOfPoints += 50
+            } else if (((results.substring(4*i, 4*i+2).toInt())-(results.substring(4*i+2, 4*i+4).toInt()))*(typA-typB)>0) {
+                sumOfPoints += abs(((results.substring(4 * i, 4 * i + 2).toInt()) - (results.substring(4 * i + 2, 4 * i + 4).toInt())) + (typA - typB))
+            }
+        }
+
         seek?.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
-
-
             override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
                 // write custom code for progress is changed
                 typA = (20 + (seek.progress / 2))
@@ -111,12 +112,6 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
                 typedResults = typedResults.substring(0, 4 * i) + typA + typB + typedResults.substring(4 * i + 4, typedResults.length)
                 Log.d(PROFILE_DEBUG_P, typedResults)
 
-
-                Log.d(PROFILE_DEBUG_P, sumPoints)
-
-                Log.d(PROFILE_DEBUG_P, sumPoints)
-
-
             }
         })
 
@@ -126,7 +121,7 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
     override fun getItemCount() = (contest.length / 4) // ConstMatch.size
 
     fun editUser(userVm: ProfileViewModel) {
-        val map = mapOf("typedResults" to typedResults)
+        val map = mapOf("typedResults" to typedResults, "sumOfPoints" to sumOfPoints.toString())
         userVm.editProfileData(map)
     }
 

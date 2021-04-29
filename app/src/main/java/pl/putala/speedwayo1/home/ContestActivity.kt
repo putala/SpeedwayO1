@@ -63,8 +63,9 @@ class ContestActivity : AppCompatActivity() {
     }
 
     override fun onPause() {
-        super.onPause()
 //        adapter.editUser(userVm)
+//        Thread.sleep(1000)
+        super.onPause()
         Log.d(TAG_CON, "ContestActivity -> onPause")
     }
 
