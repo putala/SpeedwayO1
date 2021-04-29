@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,13 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import pl.putala.speedwayo1.R
 import pl.putala.speedwayo1.home.ContestActivity
-import pl.putala.speedwayo1.data.User
 import pl.putala.speedwayo1.login.LoginActivity
 import pl.putala.speedwayo1.home.ProfileActivity
 
 class UsersActivity : AppCompatActivity() {
 
-    private val homeVm by viewModels<UsersViewModel>()
+    private val usersVm by viewModels<UsersViewModel>()
     private val adapter = UsersAdapter()
     private val auth = FirebaseAuth.getInstance()
 
@@ -31,7 +29,7 @@ class UsersActivity : AppCompatActivity() {
         findViewById<RecyclerView>(R.id.recyclerViewUsers).layoutManager = LinearLayoutManager(this)
         findViewById<RecyclerView>(R.id.recyclerViewUsers).adapter = adapter
 
-        homeVm.users.observe(this, Observer { list ->
+        usersVm.users.observe(this, Observer { list ->
             adapter.setUsers(list)
         })
     }

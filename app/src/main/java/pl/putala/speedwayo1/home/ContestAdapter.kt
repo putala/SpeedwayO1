@@ -1,5 +1,6 @@
 package pl.putala.speedwayo1.contest
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +13,52 @@ import pl.putala.speedwayo1.Constant.CONTEST
 import pl.putala.speedwayo1.Constant.ConstTeamsImage
 import pl.putala.speedwayo1.Constant.RESULTS
 import pl.putala.speedwayo1.R
+import pl.putala.speedwayo1.data.Admin
 
 
 class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() {
+
+    private var meczc = "00000000000000000000000000000000"
+    private val PROFILE_DEBUG = "PROFILE_DEBUG"
+
+
+    fun setAdmin(admin: Admin?) {
+        if (admin != null) {
+            meczc = admin.teams.toString()
+            Log.d(PROFILE_DEBUG, meczc)
+            notifyDataSetChanged()
+        }
+    }
+
+
+
+//
+//    fun setAdmin(adminek: Admin) {
+//        meczc = adminek.teams.toString()
+//    }
+
+
+
+
+//    private val adminList = ArrayList<Admin>()
+
+//
+//    fun setAdmin(adminek: Admin) {
+//        meczc = adminek.teams.toString()
+//
+////
+////        adminList.clear()
+////        adminList.addAll(adminek)
+////        notifyDataSetChanged()
+//
+//
+////        mecze = ""
+////        mecze = admin.teams!!
+////        mecze = "00010203040506070809101112131415"
+//    }
+
+
+
 
 
 
@@ -51,11 +95,21 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
         val textViewTypeResult = holder.view.findViewById<TextView>(R.id.textViewTypeResult)
         val textViewDate = holder.view.findViewById<TextView>(R.id.textViewDate)
 
-        imageViewFirstTeam.setImageResource(ConstTeamsImage[CONTEST.substring(4*i, 4*i+2).toInt()]) //ConstMatch[i].substring(0, 2).toInt()])
-        imageViewSecondTeam.setImageResource(ConstTeamsImage[CONTEST.substring(4*i+2, 4*i+4).toInt()])
-        textViewFirstTeam.text = ("" + ConstTeams[CONTEST.substring(4*i, 4*i+2).toInt()])
+
+
+        imageViewFirstTeam.setImageResource(ConstTeamsImage[meczc.substring(4*i, 4*i+2).toInt()])
+        imageViewSecondTeam.setImageResource(ConstTeamsImage[meczc.substring(4*i+2, 4*i+4).toInt()])
+        textViewFirstTeam.text = ("" + ConstTeams[meczc.substring(4*i, 4*i+2).toInt()])
         textViewResult.text = (RESULTS.substring(4*i, 4*i+2) + " : " + RESULTS.substring(4*i+2, 4*i+4))
-        textViewSecondTeam.text = ("" + ConstTeams[CONTEST.substring(4*i+2, 4*i+4).toInt()])
+        textViewSecondTeam.text = ("" + ConstTeams[meczc.substring(4*i+2, 4*i+4).toInt()])
+
+
+//
+//        imageViewFirstTeam.setImageResource(ConstTeamsImage[CONTEST.substring(4*i, 4*i+2).toInt()])
+//        imageViewSecondTeam.setImageResource(ConstTeamsImage[CONTEST.substring(4*i+2, 4*i+4).toInt()])
+//        textViewFirstTeam.text = ("" + ConstTeams[CONTEST.substring(4*i, 4*i+2).toInt()])
+//        textViewResult.text = (RESULTS.substring(4*i, 4*i+2) + " : " + RESULTS.substring(4*i+2, 4*i+4))
+//        textViewSecondTeam.text = ("" + ConstTeams[CONTEST.substring(4*i+2, 4*i+4).toInt()])
 
 //
 //        imageViewFirstTeam.setImageResource(ConstTeamsImage[  ConstMatch[i].substring(0, 2).toInt()])
@@ -63,6 +117,8 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
 //        textViewFirstTeam.text = ("" + ConstTeams[ConstMatch[i].substring(0, 2).toInt()])
 //        textViewResult.text = (ConstResult[i].substring(0, 2) + " : " + ConstResult[i].substring(2, 4))
 //        textViewSecondTeam.text = ("" + ConstTeams[ConstMatch[i].substring(2, 4).toInt()])
+
+
 
         val seek = holder.view.findViewById<SeekBar>(R.id.seekBarTyping)
         seek?.setOnSeekBarChangeListener(object :
@@ -83,11 +139,11 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
 //                textViewTypeResult.text = seek.progress.toString()
             }
         })
+
+
     }
 
-    override fun getItemCount() = (CONTEST.length/4) // ConstMatch.size
-
-
+    override fun getItemCount() = (meczc.length/4) // ConstMatch.size
 
     inner class ContestViewHolder(val view: View) : RecyclerView.ViewHolder(view)
 }

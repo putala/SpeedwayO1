@@ -5,6 +5,7 @@ object Constant {
 
 
     var ConstTeams:ArrayList<String> = arrayListOf(
+        "?",
         "Unia Leszno",
         "Stal Gorzów",
         "Sparta Wrocław",
@@ -25,6 +26,8 @@ object Constant {
 
 
     var ConstTeamsImage:ArrayList<Int> = arrayListOf(
+        R.drawable.ic_weiting,
+
         R.drawable.team00,
         R.drawable.team01,
         R.drawable.team02,

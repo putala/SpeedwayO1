@@ -32,18 +32,26 @@ class ProfileActivity : AppCompatActivity() {
         val spinerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, language)
         spinner.adapter = spinerAdapter
 
-        profileVm.user.observe(this, Observer { user -> bindUserData(user) })
+//
+//        profileVm.user.observe(this, Observer { user -> bindUserData(user) })
+
+        profileVm.user.observe(this, {user ->
+            Log.d(PROFILE_DEBUG, user.toString())
+            findViewById<TextView>(R.id.textViewNameS).text = user.name
+            findViewById<TextView>(R.id.textViewEmailS).text = user.email
+            findViewById<TextView>(R.id.textViewPointsSumS).text = user.sumOfPoints
+        })
 
     }
 
 
-    private fun bindUserData(user: User) {
-        Log.d(PROFILE_DEBUG, user.toString())
-        findViewById<TextView>(R.id.textViewNameS).text = user.name
-        findViewById<TextView>(R.id.textViewEmailS).text = user.email
-        findViewById<TextView>(R.id.textViewPointsSumS).text = user.sumOfPoints
-
-    }
+//
+//    private fun bindUserData(user: User) {
+//        Log.d(PROFILE_DEBUG, user.toString())
+//        findViewById<TextView>(R.id.textViewNameS).text = user.name
+//        findViewById<TextView>(R.id.textViewEmailS).text = user.email
+//        findViewById<TextView>(R.id.textViewPointsSumS).text = user.sumOfPoints
+//    }
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

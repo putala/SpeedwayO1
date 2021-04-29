@@ -4,11 +4,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import pl.putala.speedwayo1.data.Admin
-import pl.putala.speedwayo1.data.Car
 import pl.putala.speedwayo1.data.User
 
 class FirebaseRepository {
@@ -34,18 +32,22 @@ class FirebaseRepository {
         return cloudResult
     }
 
-//
-//    fun addUser(user: User) {
-//        cloud.collection("users")
-//            .document(auth.currentUser?.uid!!)
-//            .update("name", FieldValue.arrayUnion(user.uid))
-//            .addOnSuccessListener {
-//                Log.d(REPO_DEBUG, "Dodano imie użytkownika")
-//            }
-//            .addOnFailureListener {
-//                Log.d(REPO_DEBUG, it.message.toString())
-//            }
-//    }
+
+    fun getAdmin(): LiveData<Admin> {
+        val cloudResult = MutableLiveData<Admin>()
+        val uid = "MWdCAVAsom5VtFlGpdiu"
+        cloud.collection("admin")
+            .document(uid!!)
+            .get()
+            .addOnSuccessListener {
+                val admin = it.toObject(Admin::class.java)
+                cloudResult.postValue(admin!!)
+            }
+            .addOnFailureListener {
+                Log.d(REPO_DEBUG, it.message.toString())
+            }
+        return cloudResult
+    }
 
 
     fun getUsers(): LiveData<List<User>>{
@@ -63,21 +65,6 @@ class FirebaseRepository {
     }
 
 
-    fun getAdminData(): LiveData<Admin> {
-        val cloudResult = MutableLiveData<Admin>()
-        val uid = auth.currentUser?.uid
-        cloud.collection("admin")
-            .document(uid!!)
-            .get()
-            .addOnSuccessListener {
-                val admin = it.toObject(Admin::class.java)
-                cloudResult.postValue(admin!!)
-            }
-            .addOnFailureListener {
-                Log.d(REPO_DEBUG, it.message.toString())
-            }
-        return cloudResult
-    }
 
     fun createNewUser(user: User) {
         cloud.collection("users")
@@ -86,5 +73,16 @@ class FirebaseRepository {
     }
 
 
+//    fun addUser(user: User) {
+//        cloud.collection("users")
+//            .document(auth.currentUser?.uid!!)
+//            .update("name", FieldValue.arrayUnion(user.uid))
+//            .addOnSuccessListener {
+//                Log.d(REPO_DEBUG, "Dodano imie użytkownika")
+//            }
+//            .addOnFailureListener {
+//                Log.d(REPO_DEBUG, it.message.toString())
+//            }
+//    }
 
 }

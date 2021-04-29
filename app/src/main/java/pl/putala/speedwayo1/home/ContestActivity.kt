@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import pl.putala.speedwayo1.R
 import pl.putala.speedwayo1.contest.ContestAdapter
-import pl.putala.speedwayo1.data.Admin
-import pl.putala.speedwayo1.data.User
 import pl.putala.speedwayo1.ranking.UsersActivity
 import pl.putala.speedwayo1.login.LoginActivity
 import java.util.Observer
@@ -23,7 +21,7 @@ class ContestActivity : AppCompatActivity() {
 
     private val auth = FirebaseAuth.getInstance()
     private val adapter = ContestAdapter()
-//    private val adminVm by viewModels<AdminViewModel>()
+    private val adminVm by viewModels<AdminViewModel>()
     private val PROFILE_DEBUG = "PROFILE_DEBUG"
 
 
@@ -32,9 +30,33 @@ class ContestActivity : AppCompatActivity() {
         setContentView(R.layout.activity_contest)
 
 
+
         findViewById<RecyclerView>(R.id.recyclerViewTypes).layoutManager = LinearLayoutManager(this)
         findViewById<RecyclerView>(R.id.recyclerViewTypes).adapter = adapter
 
+
+
+
+        adminVm.admin.observe(this, {admin ->
+            Log.d(PROFILE_DEBUG, admin.toString())
+            adapter.setAdmin(admin)
+//            findViewById<TextView>(R.id.textViewNameS).text = user.name
+//            findViewById<TextView>(R.id.textViewEmailS).text = user.email
+//            findViewById<TextView>(R.id.textViewPointsSumS).text = user.sumOfPoints
+        })
+
+
+//
+//        adminVm.admin.observe(this, {admin ->
+//            adapter.setAdmin(admin)
+//        })
+
+
+
+//
+//        homeVm.users.observe(this, Observer { list ->
+//            adapter.setUsers(list)
+//        })
 
 
 //        adminVm.admin.observe(this, { admin -> adapter.setAdmin(admin) })
@@ -47,6 +69,7 @@ class ContestActivity : AppCompatActivity() {
 //
 
     }
+
 
 
 //
