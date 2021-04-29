@@ -8,4 +8,8 @@ class ProfileViewModel : ViewModel() {
     private val repository = FirebaseRepository()
     val user = repository.getUserData()
 
+    fun editProfileData(map: Map<String, String>){
+        repository.editProfileData(map)
+    }
+
 }

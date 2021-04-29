@@ -11,12 +11,7 @@
         android:theme="@style/Theme.SpeedwayO1">
         <activity android:name=".ranking.UsersActivity" />
         <activity android:name=".activites.MainActivity" />
-        <activity android:name=".BrudnopisActivity" />
         <activity android:name=".home.ProfileActivity" />
-        <activity
-            android:name=".smieci.MainActivity2"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.SpeedwayO1.NoActionBar" />
         <activity android:name=".home.ContestActivity" />
         <activity android:name=".registration.RegistrationActivity" />
         <activity android:name=".login.LoginActivity">

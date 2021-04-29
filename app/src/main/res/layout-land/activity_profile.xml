@@ -45,33 +45,33 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewNameS" />
 
 
-    <TextView
-        android:id="@+id/textViewLanguage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:text="@string/language"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/spinnerLanguage"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmailS" />
+<!--    <TextView-->
+<!--        android:id="@+id/textViewLanguage"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginEnd="10dp"-->
+<!--        android:text="@string/language"-->
+<!--        android:textSize="18dp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/spinnerLanguage"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textViewEmailS" />-->
 
-    <Spinner
-        android:id="@+id/spinnerLanguage"
-        android:layout_width="110dp"
-        android:layout_height="25dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmailS" />
+<!--    <Spinner-->
+<!--        android:id="@+id/spinnerLanguage"-->
+<!--        android:layout_width="110dp"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:layout_marginEnd="150dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textViewEmailS" />-->
 
 
     <TextView
         android:id="@+id/textViewPointsS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
         android:text="@string/points"
         android:textSize="18dp"
         android:textStyle="bold"

@@ -3,7 +3,9 @@ package pl.putala.speedwayo1.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.common.collect.Maps
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import pl.putala.speedwayo1.data.Admin
@@ -65,7 +67,6 @@ class FirebaseRepository {
     }
 
 
-
     fun createNewUser(user: User) {
         cloud.collection("users")
             .document(user.uid!!)
@@ -73,6 +74,21 @@ class FirebaseRepository {
     }
 
 
+    fun editProfileData(map: Map<String, String>) {
+        cloud.collection("users")
+            .document(auth.currentUser!!.uid)
+            .update(map)
+            .addOnSuccessListener {
+                Log.d(REPO_DEBUG, "Zaktualizowano dane!")
+            }
+            .addOnFailureListener {
+                Log.d(REPO_DEBUG, it.message.toString())
+            }
+
+    }
+
+
+//
 //    fun addUser(user: User) {
 //        cloud.collection("users")
 //            .document(auth.currentUser?.uid!!)
@@ -84,5 +100,6 @@ class FirebaseRepository {
 //                Log.d(REPO_DEBUG, it.message.toString())
 //            }
 //    }
+
 
 }

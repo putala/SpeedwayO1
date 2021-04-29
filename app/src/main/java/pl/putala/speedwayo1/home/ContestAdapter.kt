@@ -9,79 +9,49 @@ import android.widget.SeekBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import pl.putala.speedwayo1.Constant.ConstTeams
-import pl.putala.speedwayo1.Constant.CONTEST
 import pl.putala.speedwayo1.Constant.ConstTeamsImage
-import pl.putala.speedwayo1.Constant.RESULTS
 import pl.putala.speedwayo1.R
 import pl.putala.speedwayo1.data.Admin
+import pl.putala.speedwayo1.data.User
+import pl.putala.speedwayo1.home.ContestActivity
+import pl.putala.speedwayo1.home.ProfileViewModel
+import java.util.*
 
 
 class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() {
 
-    private var meczc = "00000000000000000000000000000000"
+    private var contest = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    private var results = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
     private val PROFILE_DEBUG = "PROFILE_DEBUG"
-
+    private val PROFILE_DEBUG_P = "PROFILE_DEBUG_P"
+    private var typedResults = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    private var sumPoints = "0"
+    private var typA = 0
+    private var typB = 0
 
     fun setAdmin(admin: Admin?) {
         if (admin != null) {
-            meczc = admin.teams.toString()
-            Log.d(PROFILE_DEBUG, meczc)
+            contest = admin.teams.toString()
+            results = admin.results.toString()
+//            Log.d(PROFILE_DEBUG, contest)
+            notifyDataSetChanged()
+        }
+    }
+
+    fun getUser(user: User?) {
+        if (user != null) {
+            typedResults = user.typedResults.toString()
+            sumPoints = user.sumOfPoints.toString()
+            Log.d(PROFILE_DEBUG, typedResults)
             notifyDataSetChanged()
         }
     }
 
 
 
-//
-//    fun setAdmin(adminek: Admin) {
-//        meczc = adminek.teams.toString()
-//    }
-
-
-
-
-//    private val adminList = ArrayList<Admin>()
-
-//
-//    fun setAdmin(adminek: Admin) {
-//        meczc = adminek.teams.toString()
-//
-////
-////        adminList.clear()
-////        adminList.addAll(adminek)
-////        notifyDataSetChanged()
-//
-//
-////        mecze = ""
-////        mecze = admin.teams!!
-////        mecze = "00010203040506070809101112131415"
-//    }
-
-
-
-
-
-
-//
-//    var mecze: ArrayList<String>? = null
-//
-//    fun setAdmin(admin: Admin) {
-//        mecze = admin.teams
-//    }
-
-//
-//    var mecze: ArrayList<String>? = null
-//
-//    fun setAdmin(ArrayList<String>: cosik) {
-//        mecze = cosik
-//    }
-
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContestViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_contest, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_contest, parent, false)
         return ContestViewHolder(itemView)
     }
 
@@ -97,36 +67,36 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
 
 
 
-        imageViewFirstTeam.setImageResource(ConstTeamsImage[meczc.substring(4*i, 4*i+2).toInt()])
-        imageViewSecondTeam.setImageResource(ConstTeamsImage[meczc.substring(4*i+2, 4*i+4).toInt()])
-        textViewFirstTeam.text = ("" + ConstTeams[meczc.substring(4*i, 4*i+2).toInt()])
-        textViewResult.text = (RESULTS.substring(4*i, 4*i+2) + " : " + RESULTS.substring(4*i+2, 4*i+4))
-        textViewSecondTeam.text = ("" + ConstTeams[meczc.substring(4*i+2, 4*i+4).toInt()])
-
-
-//
-//        imageViewFirstTeam.setImageResource(ConstTeamsImage[CONTEST.substring(4*i, 4*i+2).toInt()])
-//        imageViewSecondTeam.setImageResource(ConstTeamsImage[CONTEST.substring(4*i+2, 4*i+4).toInt()])
-//        textViewFirstTeam.text = ("" + ConstTeams[CONTEST.substring(4*i, 4*i+2).toInt()])
-//        textViewResult.text = (RESULTS.substring(4*i, 4*i+2) + " : " + RESULTS.substring(4*i+2, 4*i+4))
-//        textViewSecondTeam.text = ("" + ConstTeams[CONTEST.substring(4*i+2, 4*i+4).toInt()])
-
-//
-//        imageViewFirstTeam.setImageResource(ConstTeamsImage[  ConstMatch[i].substring(0, 2).toInt()])
-//        imageViewSecondTeam.setImageResource(ConstTeamsImage[ConstMatch[i].substring(2, 4).toInt()])
-//        textViewFirstTeam.text = ("" + ConstTeams[ConstMatch[i].substring(0, 2).toInt()])
-//        textViewResult.text = (ConstResult[i].substring(0, 2) + " : " + ConstResult[i].substring(2, 4))
-//        textViewSecondTeam.text = ("" + ConstTeams[ConstMatch[i].substring(2, 4).toInt()])
-
-
+        imageViewFirstTeam.setImageResource(
+            ConstTeamsImage[contest.substring(4 * i, 4 * i + 2).toInt()]
+        )
+        imageViewSecondTeam.setImageResource(
+            ConstTeamsImage[contest.substring(4 * i + 2, 4 * i + 4).toInt()]
+        )
+        textViewFirstTeam.text =
+            ("" + ConstTeams[contest.substring(4 * i, 4 * i + 2).toInt()])
+        textViewResult.text =
+            (results.substring(4 * i, 4 * i + 2) + " : " + results.substring(4 * i + 2, 4 * i + 4))
+        textViewSecondTeam.text = ("" + ConstTeams[contest.substring(4 * i + 2, 4 * i + 4).toInt()])
+        textViewTypeResult.text =
+            (typedResults.substring(4 * i, 4 * i + 2) + " : " + typedResults.substring(
+                4 * i + 2,
+                4 * i + 4
+            ))
+        typA = typedResults.substring(4 * i, 4 * i + 2).toInt()
+        typB = typedResults.substring(4 * i + 2, 4 * i + 4).toInt()
 
         val seek = holder.view.findViewById<SeekBar>(R.id.seekBarTyping)
+        seek.progress = 2 * (typA - 20)
         seek?.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
+
+
             override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
                 // write custom code for progress is changed
-                textViewTypeResult.text = ((20 + (seek.progress / 2)).toString()
-                        + " : " + (70 - (seek.progress / 2)).toString())
+                typA = (20 + (seek.progress / 2))
+                typB = (70 - (seek.progress / 2))
+                textViewTypeResult.text = "$typA : $typB"
             }
 
             override fun onStartTrackingTouch(seek: SeekBar) {
@@ -137,15 +107,31 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
             override fun onStopTrackingTouch(seek: SeekBar) {
                 // write custom code for progress is stopped
 //                textViewTypeResult.text = seek.progress.toString()
+                Log.d(PROFILE_DEBUG_P, typedResults)
+                typedResults = typedResults.substring(0, 4 * i) + typA + typB + typedResults.substring(4 * i + 4, typedResults.length)
+                Log.d(PROFILE_DEBUG_P, typedResults)
+
+
+                Log.d(PROFILE_DEBUG_P, sumPoints)
+
+                Log.d(PROFILE_DEBUG_P, sumPoints)
+
+
             }
         })
 
-
     }
 
-    override fun getItemCount() = (meczc.length/4) // ConstMatch.size
+
+    override fun getItemCount() = (contest.length / 4) // ConstMatch.size
+
+    fun editUser(userVm: ProfileViewModel) {
+        val map = mapOf("typedResults" to typedResults)
+        userVm.editProfileData(map)
+    }
 
     inner class ContestViewHolder(val view: View) : RecyclerView.ViewHolder(view)
+
 }
 
 

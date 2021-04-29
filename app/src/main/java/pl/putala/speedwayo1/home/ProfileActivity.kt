@@ -26,32 +26,22 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-
-        val language = resources.getStringArray(R.array.language)
-        val spinner = findViewById<Spinner>(R.id.spinnerLanguage)
-        val spinerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, language)
-        spinner.adapter = spinerAdapter
-
 //
-//        profileVm.user.observe(this, Observer { user -> bindUserData(user) })
+//        val language = resources.getStringArray(R.array.language)
+//        val spinner = findViewById<Spinner>(R.id.spinnerLanguage)
+//        val spinerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, language)
+//        spinner.adapter = spinerAdapter
 
-        profileVm.user.observe(this, {user ->
-            Log.d(PROFILE_DEBUG, user.toString())
-            findViewById<TextView>(R.id.textViewNameS).text = user.name
-            findViewById<TextView>(R.id.textViewEmailS).text = user.email
-            findViewById<TextView>(R.id.textViewPointsSumS).text = user.sumOfPoints
-        })
-
+        profileVm.user.observe(this, Observer { user -> bindUserData(user) })
     }
 
 
-//
-//    private fun bindUserData(user: User) {
-//        Log.d(PROFILE_DEBUG, user.toString())
-//        findViewById<TextView>(R.id.textViewNameS).text = user.name
-//        findViewById<TextView>(R.id.textViewEmailS).text = user.email
-//        findViewById<TextView>(R.id.textViewPointsSumS).text = user.sumOfPoints
-//    }
+    private fun bindUserData(user: User) {
+        Log.d(PROFILE_DEBUG, user.toString())
+        findViewById<TextView>(R.id.textViewNameS).text = user.name
+        findViewById<TextView>(R.id.textViewEmailS).text = user.email
+        findViewById<TextView>(R.id.textViewPointsSumS).text = user.sumOfPoints
+    }
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
