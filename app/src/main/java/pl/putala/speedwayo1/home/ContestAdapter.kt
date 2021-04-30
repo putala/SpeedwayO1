@@ -93,63 +93,40 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
             if (typA != 0){
                 tempPoints = 0
                 if (((results.substring(4*i, 4*i+2).toInt()) - (results.substring(4*i+2, 4*i+4).toInt()) == 0)
-                    && (typA - typB == 0)){
-                    tempPoints = 70
-                } else if (((results.substring(4*i, 4*i+2).toInt())-(results.substring(4*i+2, 4*i+4).toInt()))*(typA-typB)>0) {
-                    tempPoints = 50 - abs(((results.substring(4 * i, 4 * i + 2).toInt()) - (results.substring(4 * i + 2, 4 * i + 4).toInt())) - (typA - typB))
+                    && (typA - typB == 0)){ tempPoints = 70 }
+                else if (((results.substring(4*i, 4*i+2).toInt())-(results.substring(4*i+2, 4*i+4).toInt()))*(typA-typB)>0) {
+                    tempPoints = 50 - abs(((results.substring(4 * i, 4 * i + 2).toInt()) - (results.substring(4 * i + 2, 4 * i + 4)
+                        .toInt())) - (typA - typB))
                     if (results.substring(4*i, 4*i+2).toInt() == typA){
                         tempPoints += 20
                     }
                 }
                 tempPointsString = when {
-                    tempPoints < 10 -> {
-                        "000$tempPoints"
-                    }
-                    tempPoints < 100 -> {
-                        "00$tempPoints"
-                    }
-                    tempPoints < 1000 -> {
-                        "0$tempPoints"
-                    }
-                    else -> {
-                        "$tempPoints"
-                    }
+                    tempPoints < 10 -> { "000$tempPoints" }
+                    tempPoints < 100 -> { "00$tempPoints" }
+                    tempPoints < 1000 -> { "0$tempPoints" }
+                    else -> { "$tempPoints" }
                 }
                 pointsString = pointsString.substring(0, 4 * i) + tempPointsString + pointsString.substring(4 * i + 4, pointsString.length)
                 sumOfPoints = 0
-                for (j in 0 until (pointsString.length/4).toInt()) {
-                    sumOfPoints += pointsString.substring(4 * j, 4 * j + 4).toInt()
-                }
-            }
-        } else {
-            seek.visibility = SeekBar.VISIBLE
-        }
-
+                for (j in 0 until (pointsString.length/4).toInt()) { sumOfPoints += pointsString.substring(4 * j, 4 * j + 4).toInt() } } }
+        else { seek.visibility = SeekBar.VISIBLE }
 
         seek?.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
-                // write custom code for progress is changed
                 typA = (20 + (seek.progress / 2))
                 typB = (70 - (seek.progress / 2))
                 textViewTypeResult.text = "$typA : $typB"
             }
-
-            override fun onStartTrackingTouch(seek: SeekBar) {
-                // write custom code for progress is started
-//                textViewTypeResult.text = seek.progress.toString()
-            }
-
+            override fun onStartTrackingTouch(seek: SeekBar) {}
             override fun onStopTrackingTouch(seek: SeekBar) {
-                // write custom code for progress is stopped
-//                textViewTypeResult.text = seek.progress.toString()
                 Log.d(PROFILE_DEBUG_P, typedResults)
-                typedResults = typedResults.substring(0, 4 * i) + typA + typB + typedResults.substring(4 * i + 4, typedResults.length)
+                typedResults = typedResults.substring(0, 4 * i) + typA + typB + typedResults
+                    .substring(4 * i + 4, typedResults.length)
                 Log.d(PROFILE_DEBUG_P, typedResults)
-
             }
         })
-
     }
 
     override fun getItemCount() = (contest.length / 4)

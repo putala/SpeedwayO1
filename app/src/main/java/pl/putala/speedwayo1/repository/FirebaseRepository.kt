@@ -18,6 +18,13 @@ class FirebaseRepository {
     private val auth = FirebaseAuth.getInstance()
     private val cloud = FirebaseFirestore.getInstance()
 
+
+    fun createNewUser(user: User) {
+        cloud.collection("users")
+            .document(user.uid!!)
+            .set(user)
+    }
+
     fun getUserData(): LiveData<User>{
         val cloudResult = MutableLiveData<User>()
         val uid = auth.currentUser?.uid
@@ -34,6 +41,17 @@ class FirebaseRepository {
         return cloudResult
     }
 
+    fun editProfileData(map: Map<String, String>) {
+        cloud.collection("users")
+            .document(auth.currentUser!!.uid)
+            .update(map)
+            .addOnSuccessListener {
+                Log.d(REPO_DEBUG, "Zaktualizowano dane!")
+            }
+            .addOnFailureListener {
+                Log.d(REPO_DEBUG, it.message.toString())
+            }
+    }
 
     fun getAdmin(): LiveData<Admin> {
         val cloudResult = MutableLiveData<Admin>()
@@ -51,7 +69,6 @@ class FirebaseRepository {
         return cloudResult
     }
 
-
     fun getUsers(): LiveData<List<User>>{
         val cloudResult = MutableLiveData<List<User>>()
         cloud.collection("users")
@@ -64,27 +81,6 @@ class FirebaseRepository {
                 Log.d(REPO_DEBUG, it.message.toString())
             }
         return cloudResult
-    }
-
-
-    fun createNewUser(user: User) {
-        cloud.collection("users")
-            .document(user.uid!!)
-            .set(user)
-    }
-
-
-    fun editProfileData(map: Map<String, String>) {
-        cloud.collection("users")
-            .document(auth.currentUser!!.uid)
-            .update(map)
-            .addOnSuccessListener {
-                Log.d(REPO_DEBUG, "Zaktualizowano dane!")
-            }
-            .addOnFailureListener {
-                Log.d(REPO_DEBUG, it.message.toString())
-            }
-
     }
 
 

@@ -24,11 +24,9 @@ class RegistrationActivity : BaseActivity() {
     private val fbAuth = FirebaseAuth.getInstance()
     private val regVm by viewModels<RegistrationViewModel>()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
-
         validationText(
             findViewById(R.id.editTextNameSave),
             findViewById(R.id.textViewNameSave)
@@ -46,14 +44,10 @@ class RegistrationActivity : BaseActivity() {
             findViewById(R.id.editTextConfirmPasswordSave),
             findViewById(R.id.textViewConfirmPasswordSave)
         )
-
     }
 
 
-
-
     fun save(view: View) {
-
         val nicknameSave = (findViewById<EditText>(R.id.editTextNameSave))
             .text?.trim().toString()
         val emailSave = (findViewById<EditText>(R.id.editTextEmailSave))
@@ -62,10 +56,8 @@ class RegistrationActivity : BaseActivity() {
             .text?.trim().toString()
         val confPassSave = (findViewById<EditText>(R.id.editTextConfirmPasswordSave))
             .text?.trim().toString()
-
         if (findViewById<CheckBox>(R.id.checkBoxRegulations).isChecked) {
             findViewById<TextView>(R.id.textViewRegulations).visibility = TextView.INVISIBLE
-
             if (findViewById<TextView>(R.id.textViewNameSave).visibility == TextView.INVISIBLE
                 && findViewById<TextView>(R.id.textViewEmailSave).visibility == TextView.INVISIBLE
                 && findViewById<TextView>(R.id.textViewPasswordSave).visibility == TextView.INVISIBLE
@@ -75,7 +67,6 @@ class RegistrationActivity : BaseActivity() {
                 fbAuth.createUserWithEmailAndPassword(emailSave, passSave)
                     .addOnSuccessListener {authRes ->
                         if(authRes.user != null) {
-
                             val user = pl.putala.speedwayo1.data.User(
                                 authRes.user!!.uid,
                                 nicknameSave,
@@ -85,10 +76,8 @@ class RegistrationActivity : BaseActivity() {
                                 "0",
                                 "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
                                 ArrayList<Date> ())
-
                             regVm.createNewUser(user)
                             startApp()
-
                         }
                     }
                     .addOnFailureListener {exc ->
@@ -97,7 +86,6 @@ class RegistrationActivity : BaseActivity() {
                         startActivity(Intent(this, LoginActivity::class.java))
                     }
             }
-
         } else {
             findViewById<TextView>(R.id.textViewRegulations).visibility = TextView.VISIBLE
         }
@@ -107,6 +95,5 @@ class RegistrationActivity : BaseActivity() {
     fun cancel(view: View) {
         startActivity(Intent(this, LoginActivity::class.java))
     }
-
 
 }

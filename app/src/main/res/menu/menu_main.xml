@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <item
         android:id="@+id/action_contest"
         android:icon="@drawable/ic_baseline_moped_24"
         android:title="Typy"
         app:showAsAction="always" />
-
     <item
         android:id="@+id/action_ranking"
         android:icon="@drawable/ic_baseline_military_tech_24"
         android:title="Ranking"
         app:showAsAction="always"/>
-
     <item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="Settings"
         app:showAsAction="always" />
-
     <item
         android:id="@+id/action_logout"
         android:icon="@drawable/ic_baseline_power_settings_new_24"
         android:title="Logout"
         app:showAsAction="always" />
-
-
 </menu>
+
+
+
+
+

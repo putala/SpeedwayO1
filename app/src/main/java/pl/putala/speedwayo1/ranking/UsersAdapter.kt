@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import pl.putala.speedwayo1.R
 import pl.putala.speedwayo1.data.User
 
-
 class UsersAdapter: RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
 
     private val usersList = ArrayList<User>()
@@ -37,20 +36,14 @@ class UsersAdapter: RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
         val points = holder.itemView.findViewById<TextView>(R.id.textViewPoints)
         val position = holder.itemView.findViewById<TextView>(R.id.textViewPosition)
         val image = holder.itemView.findViewById<ImageView>(R.id.imageViewUserImage)
-
-        if (i<9) {
-            position.text = "0" + (i+1)
-        } else {
-            position.text = "" + (i+1)
+        if (i<9) { position.text = "0" + (i+1)
+        } else { position.text = "" + (i+1)
         }
-
         name.text = usersList[holder.absoluteAdapterPosition].name
         points.text = usersList[holder.absoluteAdapterPosition].sumOfPoints
-
     }
 
     override fun getItemCount() = usersList.size
-
     inner class UsersViewHolder(val view: View) : RecyclerView.ViewHolder(view){}
 }
 

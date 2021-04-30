@@ -64,14 +64,10 @@ abstract class BaseActivity : AppCompatActivity() {
 
 
     protected fun validationEmail(email: EditText, emailWarn: TextView) {
-
         email.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
             override fun afterTextChanged(s: Editable?) {
-
                 if (email.isFocused && email.length() != 0
                 ) {
                     var first = false
@@ -79,27 +75,14 @@ abstract class BaseActivity : AppCompatActivity() {
                     var dot = false
                     var end = false
                     for (i in email.text) {
-                        if (dot && i != '@' && i != '.') {
-                            end = true
-                        }
-                        if (monkey && i == '.'){
-                            dot = true
-                        }
-                        if (first && i == '@') {
-                            monkey = true
-                        }
-                        if (i != '@' && i != '.'){
-                            first = true
-                        }
+                        if (dot && i != '@' && i != '.') { end = true }
+                        if (monkey && i == '.'){ dot = true }
+                        if (first && i == '@') { monkey = true }
+                        if (i != '@' && i != '.'){ first = true }
                     }
-                    if (end) {
-                        emailWarn.visibility = TextView.INVISIBLE
-                    } else {
-                        emailWarn.visibility = TextView.VISIBLE
-                    }
-                } else {
-                    emailWarn.visibility = TextView.INVISIBLE
-                }
+                    if (end) { emailWarn.visibility = TextView.INVISIBLE } else {
+                        emailWarn.visibility = TextView.VISIBLE }
+                } else { emailWarn.visibility = TextView.INVISIBLE }
             }
         })
     }
