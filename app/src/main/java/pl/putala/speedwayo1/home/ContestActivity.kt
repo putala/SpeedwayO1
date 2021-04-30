@@ -15,7 +15,6 @@ import pl.putala.speedwayo1.R
 import pl.putala.speedwayo1.contest.ContestAdapter
 import pl.putala.speedwayo1.login.LoginActivity
 import pl.putala.speedwayo1.ranking.UsersActivity
-import java.util.*
 
 class ContestActivity : AppCompatActivity() {
 
@@ -33,9 +32,9 @@ class ContestActivity : AppCompatActivity() {
 
         Log.d(TAG_CON, "MainActivity -> onCreate")
 
-
         findViewById<RecyclerView>(R.id.recyclerViewTypes).layoutManager = LinearLayoutManager(this)
         findViewById<RecyclerView>(R.id.recyclerViewTypes).adapter = adapter
+
 
         userVm.user.observe(this, { user ->
             Log.d(PROFILE_DEBUG, user.toString())
@@ -45,7 +44,7 @@ class ContestActivity : AppCompatActivity() {
 
         adminVm.admin.observe(this, { admin ->
             Log.d(PROFILE_DEBUG, admin.toString())
-            adapter.setAdmin(admin)
+            adapter.getAdmin(admin)
         })
 
         refreshApp()
@@ -56,7 +55,6 @@ class ContestActivity : AppCompatActivity() {
     private fun refreshApp(){
         findViewById<SwipeRefreshLayout>(R.id.refreshLayoutContest).setOnRefreshListener {
             adapter.editUser(userVm)
-            Thread.sleep(200)
             startActivity(Intent(this, ContestActivity::class.java))
             findViewById<SwipeRefreshLayout>(R.id.refreshLayoutContest).isRefreshing = false
         }
@@ -109,22 +107,18 @@ class ContestActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_contest -> {
                 adapter.editUser(userVm)
-                Thread.sleep(200)
                 startActivity(Intent(this, ContestActivity::class.java))
             }
             R.id.action_ranking -> {
                 adapter.editUser(userVm)
-                Thread.sleep(200)
                 startActivity(Intent(this, UsersActivity::class.java))
             }
             R.id.action_settings -> {
                 adapter.editUser(userVm)
-                Thread.sleep(200)
                 startActivity(Intent(this, ProfileActivity::class.java))
             }
             R.id.action_logout -> {
                 adapter.editUser(userVm)
-                Thread.sleep(200)
                 fbAuth.signOut()
                 startActivity(Intent(this, LoginActivity::class.java))
             }

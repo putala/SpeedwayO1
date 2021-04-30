@@ -13,9 +13,7 @@ import pl.putala.speedwayo1.Constant.ConstTeamsImage
 import pl.putala.speedwayo1.R
 import pl.putala.speedwayo1.data.Admin
 import pl.putala.speedwayo1.data.User
-import pl.putala.speedwayo1.home.ContestActivity
 import pl.putala.speedwayo1.home.ProfileViewModel
-import java.util.*
 import kotlin.math.abs
 
 
@@ -26,13 +24,17 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
     private val PROFILE_DEBUG = "PROFILE_DEBUG"
     private val PROFILE_DEBUG_P = "PROFILE_DEBUG_P"
     private var typedResults = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    private var pointsString = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
     private var sumOfPoints = 0
-    private var nSumOfPoints = ""
+    private var sumOfPointsString = ""
+    private var tempPoints = 0
+    private var tempPointsString = ""
     private var typA = 0
     private var typB = 0
     private var visibilityBar = SeekBar.INVISIBLE
 
-    fun setAdmin(admin: Admin?) {
+
+    fun getAdmin(admin: Admin?) {
         if (admin != null) {
             contest = admin.teams.toString()
             results = admin.results.toString()
@@ -47,7 +49,9 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
     fun getUser(user: User?) {
         if (user != null) {
             typedResults = user.typedResults.toString()
-//            sumOfPoints = user.sumOfPoints.toString()
+            pointsString = user.points.toString()
+            sumOfPointsString = user.sumOfPoints.toString()
+            sumOfPoints = sumOfPointsString.toInt()
             Log.d(PROFILE_DEBUG, typedResults)
             notifyDataSetChanged()
         }
@@ -89,16 +93,35 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
         if ((results.substring(4 * i, 4 * i + 2)) != "00" ||  (results.substring(4 * i + 2, 4 * i + 4)) != "00"){
             seek.visibility = visibilityBar
             if (typA != 0){
+                tempPoints = 0
                 if (((results.substring(4*i, 4*i+2).toInt()) - (results.substring(4*i+2, 4*i+4).toInt()) == 0)
                     && (typA - typB == 0)){
-                    sumOfPoints += 70
+                    tempPoints = 70
                 } else if (((results.substring(4*i, 4*i+2).toInt())-(results.substring(4*i+2, 4*i+4).toInt()))*(typA-typB)>0) {
-                    sumOfPoints += 50 - abs(((results.substring(4 * i, 4 * i + 2).toInt()) - (results.substring(4 * i + 2, 4 * i + 4).toInt())) - (typA - typB))
+                    tempPoints = 50 - abs(((results.substring(4 * i, 4 * i + 2).toInt()) - (results.substring(4 * i + 2, 4 * i + 4).toInt())) - (typA - typB))
                     if (results.substring(4*i, 4*i+2).toInt() == typA){
-                        sumOfPoints += 20
+                        tempPoints += 20
                     }
                 }
-
+                tempPointsString = when {
+                    tempPoints < 10 -> {
+                        "000$tempPoints"
+                    }
+                    tempPoints < 100 -> {
+                        "00$tempPoints"
+                    }
+                    tempPoints < 1000 -> {
+                        "0$tempPoints"
+                    }
+                    else -> {
+                        "$tempPoints"
+                    }
+                }
+                pointsString = pointsString.substring(0, 4 * i) + tempPointsString + pointsString.substring(4 * i + 4, pointsString.length)
+                sumOfPoints = 0
+                for (j in 0 until (pointsString.length/4).toInt()) {
+                    sumOfPoints += pointsString.substring(4 * j, 4 * j + 4).toInt()
+                }
             }
         } else {
             seek.visibility = SeekBar.VISIBLE
@@ -131,22 +154,27 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
 
     }
 
-
-    override fun getItemCount() = (contest.length / 4) // ConstMatch.size
-
-
+    override fun getItemCount() = (contest.length / 4)
 
     fun editUser(userVm: ProfileViewModel) {
-        if(sumOfPoints<10){
-            nSumOfPoints = "000$sumOfPoints"
-        } else if (sumOfPoints<100) {
-            nSumOfPoints = "00$sumOfPoints"
-        } else {
-            nSumOfPoints = "0$sumOfPoints"
+        sumOfPointsString = when {
+            sumOfPoints<10 -> {
+                "000$sumOfPoints"
+            }
+            sumOfPoints<100 -> {
+                "00$sumOfPoints"
+            }
+            sumOfPoints<1000 -> {
+                "0$sumOfPoints"
+            }
+            else -> {
+                "$sumOfPoints"
+            }
         }
-
-        val map = mapOf("typedResults" to typedResults, "sumOfPoints" to nSumOfPoints)
+        val map = mapOf("points" to pointsString, "typedResults" to typedResults, "sumOfPoints" to sumOfPointsString)
+        Thread.sleep(100)
         userVm.editProfileData(map)
+        Thread.sleep(100)
     }
 
     inner class ContestViewHolder(val view: View) : RecyclerView.ViewHolder(view)

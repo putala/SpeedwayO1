@@ -8,6 +8,7 @@ data class User(
     val name: String? = null,
     var email: String? = null,
     val image: String? = null,
+    val points: String? = null,
     val sumOfPoints: String? = null,
     val typedResults: String? = null,
     val date: ArrayList<Date>? = null,

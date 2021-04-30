@@ -29,6 +29,7 @@ class UsersActivity : AppCompatActivity() {
 
         findViewById<RecyclerView>(R.id.recyclerViewUsers).layoutManager = LinearLayoutManager(this)
         findViewById<RecyclerView>(R.id.recyclerViewUsers).adapter = adapter
+//        findViewById<RecyclerView>(R.id.recyclerViewUsers).setHasFixedSize(true)
 
         usersVm.users.observe(this, Observer { list ->
             adapter.setUsers(list)
