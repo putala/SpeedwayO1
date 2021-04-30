@@ -46,7 +46,6 @@ class UsersAdapter: RecyclerView.Adapter<UsersAdapter.UsersViewHolder>() {
 
         name.text = usersList[holder.absoluteAdapterPosition].name
         points.text = usersList[holder.absoluteAdapterPosition].sumOfPoints
-        // carImage   -> potem :-)
 
     }
 

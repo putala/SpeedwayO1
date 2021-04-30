@@ -42,8 +42,6 @@ class ProfileActivity : AppCompatActivity() {
 
         profileVm.user.observe(this, Observer { user -> bindUserData(user) })
 
-
-
     }
 
 

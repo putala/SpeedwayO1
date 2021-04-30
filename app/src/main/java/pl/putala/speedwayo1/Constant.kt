@@ -2,8 +2,6 @@ package pl.putala.speedwayo1
 
 object Constant {
 
-
-
     var ConstTeams:ArrayList<String> = arrayListOf(
         "?",
         "Unia Leszno",
@@ -23,7 +21,6 @@ object Constant {
         "Polonia Bydgoszcz",
         "Wilki Krosno"
     )
-
 
     var ConstTeamsImage:ArrayList<Int> = arrayListOf(
         R.drawable.ic_weiting,
@@ -46,37 +43,5 @@ object Constant {
         R.drawable.team14,
         R.drawable.team15
     )
-
-
-    var CONTEST = "00010203040506070809101112131415"
-    var RESULTS = "41494045444655355040603045454446"
-
-
-
-
-//
-//    var ConstMatch:ArrayList<String> = arrayListOf(
-//        "0001",
-//        "0203",
-//        "0405",
-//        "0607",
-//        "0809",
-//        "1011",
-//        "1213",
-//        "1415"
-//    )
-//
-//
-//    var ConstResult:ArrayList<String> = arrayListOf(
-//        "4446",
-//        "4545",
-//        "6030",
-//        "5040",
-//        "5535",
-//        "4446",
-//        "4045",
-//        "4149"
-//    )
-
 
 }

@@ -58,8 +58,6 @@ class ContestAdapter : RecyclerView.Adapter<ContestAdapter.ContestViewHolder>() 
     }
 
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContestViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_contest, parent, false)
         return ContestViewHolder(itemView)

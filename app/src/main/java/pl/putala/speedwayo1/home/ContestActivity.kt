@@ -35,11 +35,9 @@ class ContestActivity : AppCompatActivity() {
         findViewById<RecyclerView>(R.id.recyclerViewTypes).layoutManager = LinearLayoutManager(this)
         findViewById<RecyclerView>(R.id.recyclerViewTypes).adapter = adapter
 
-
         userVm.user.observe(this, { user ->
             Log.d(PROFILE_DEBUG, user.toString())
             adapter.getUser(user)
-//            adapter.editUser(userVm)
         })
 
         adminVm.admin.observe(this, { admin ->
